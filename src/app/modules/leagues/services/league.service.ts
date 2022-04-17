@@ -15,9 +15,9 @@ export class LeagueService {
         return this.httpClient.get<FootballApiSeasonsResponse>(url);
     }
 
-    public fetchLeagues(leagueQueryParams: LeagueQueryParams) {
+    public fetchLeagues(queryParams: LeagueQueryParams) {
         const url = `${apiConfig.baseUrl}${apiConfig.leagues}`;
-        const params = this.getHttpParams(leagueQueryParams);
+        const params = this.getHttpParams(queryParams);
         return this.httpClient.get<FootballApiLeaguesResponse>(url, {params});
     }
 

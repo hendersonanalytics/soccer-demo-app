@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { noop } from 'rxjs';
 
 import { apiConfig } from 'src/app/configs/api.config';
 import { TEST_LEAGUES_RESPONSE } from 'src/app/support/data/test-leagues-response';
@@ -41,7 +40,7 @@ describe('LeagueService', () => {
 
         it('throws the expected error when the api returns an error', () => {
             leagueService.fetchSeasons().subscribe(
-                () => { noop; },
+                () => { },
                 (err) => {
                     expect(err.error.message).toBe(API_ERR_MSG);
                     expect(err.status).toBe(500);
@@ -72,7 +71,7 @@ describe('LeagueService', () => {
 
         it('throws the expected error when the api returns an error', () => {
             leagueService.fetchLeagues({ season }).subscribe(
-                () => { noop; },
+                () => { },
                 (err) => {
                     expect(err.error.message).toBe(API_ERR_MSG);
                     expect(err.status).toBe(500);
