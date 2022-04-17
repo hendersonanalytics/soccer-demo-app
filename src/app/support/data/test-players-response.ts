@@ -4,7 +4,8 @@ export const TEST_PLAYERS_RESPONSE = {
     parameters: {
         season: '2021',
         team: '42',
-        league: '39'
+        league: '39',
+        page: '1'
     },
     errors: [],
     results: 20,
@@ -13,6 +14,386 @@ export const TEST_PLAYERS_RESPONSE = {
         total: 3
     },
     response: [
+        {
+            player: {
+                id: 2784,
+                name: 'R. Rúnarsson',
+                firstname: 'Rúnar Alex',
+                lastname: 'Rúnarsson',
+                age: 27,
+                birth: {
+                    date: '1995-02-18',
+                    place: null,
+                    country: 'Iceland'
+                },
+                nationality: 'Iceland',
+                height: '186 cm',
+                weight: '78 kg',
+                injured: false,
+                photo: 'https://media.api-sports.io/football/players/2784.png'
+            },
+            statistics: [
+                {
+                    team: {
+                        id: 42,
+                        name: 'Arsenal',
+                        logo: 'https://media.api-sports.io/football/teams/42.png'
+                    },
+                    league: {
+                        id: 39,
+                        name: 'Premier League',
+                        country: 'England',
+                        logo: 'https://media.api-sports.io/football/leagues/39.png',
+                        flag: 'https://media.api-sports.io/flags/gb.svg',
+                        season: 2021
+                    },
+                    games: {
+                        appearences: 0,
+                        lineups: 0,
+                        minutes: 0,
+                        number: null,
+                        position: 'Goalkeeper',
+                        rating: null,
+                        captain: false
+                    },
+                    substitutes: {
+                        in: 0,
+                        out: 0,
+                        bench: 0
+                    },
+                    shots: {
+                        total: null,
+                        on: null
+                    },
+                    goals: {
+                        total: 0,
+                        conceded: null,
+                        assists: null,
+                        saves: null
+                    },
+                    passes: {
+                        total: null,
+                        key: null,
+                        accuracy: null
+                    },
+                    tackles: {
+                        total: null,
+                        blocks: null,
+                        interceptions: null
+                    },
+                    duels: {
+                        total: null,
+                        won: null
+                    },
+                    dribbles: {
+                        attempts: null,
+                        success: null,
+                        past: null
+                    },
+                    fouls: {
+                        drawn: null,
+                        committed: null
+                    },
+                    cards: {
+                        yellow: 0,
+                        yellowred: 0,
+                        red: 0
+                    },
+                    penalty: {
+                        won: null,
+                        commited: null,
+                        scored: null,
+                        missed: null,
+                        saved: null
+                    }
+                }
+            ]
+        },
+        {
+            player: {
+                id: 169295,
+                name: 'K. Hein',
+                firstname: 'Karl Jakob',
+                lastname: 'Hein',
+                age: 20,
+                birth: {
+                    date: '2002-04-13',
+                    place: 'Põlva',
+                    country: 'Estonia'
+                },
+                nationality: 'Estonia',
+                height: '193 cm',
+                weight: null,
+                injured: false,
+                photo: 'https://media.api-sports.io/football/players/169295.png'
+            },
+            statistics: [
+                {
+                    team: {
+                        id: 42,
+                        name: 'Arsenal',
+                        logo: 'https://media.api-sports.io/football/teams/42.png'
+                    },
+                    league: {
+                        id: 39,
+                        name: 'Premier League',
+                        country: 'England',
+                        logo: 'https://media.api-sports.io/football/leagues/39.png',
+                        flag: 'https://media.api-sports.io/flags/gb.svg',
+                        season: 2021
+                    },
+                    games: {
+                        appearences: 0,
+                        lineups: 0,
+                        minutes: 0,
+                        number: null,
+                        position: 'Goalkeeper',
+                        rating: null,
+                        captain: false
+                    },
+                    substitutes: {
+                        in: 0,
+                        out: 0,
+                        bench: 1
+                    },
+                    shots: {
+                        total: null,
+                        on: null
+                    },
+                    goals: {
+                        total: 0,
+                        conceded: 0,
+                        assists: null,
+                        saves: null
+                    },
+                    passes: {
+                        total: null,
+                        key: null,
+                        accuracy: null
+                    },
+                    tackles: {
+                        total: null,
+                        blocks: null,
+                        interceptions: null
+                    },
+                    duels: {
+                        total: null,
+                        won: null
+                    },
+                    dribbles: {
+                        attempts: null,
+                        success: null,
+                        past: null
+                    },
+                    fouls: {
+                        drawn: null,
+                        committed: null
+                    },
+                    cards: {
+                        yellow: 0,
+                        yellowred: 0,
+                        red: 0
+                    },
+                    penalty: {
+                        won: null,
+                        commited: null,
+                        scored: 0,
+                        missed: 0,
+                        saved: 0
+                    }
+                }
+            ]
+        },
+        {
+            player: {
+                id: 1456,
+                name: 'A. Maitland-Niles',
+                firstname: 'Ainsley',
+                lastname: 'Maitland-Niles',
+                age: 25,
+                birth: {
+                    date: '1997-08-29',
+                    place: 'London',
+                    country: 'England'
+                },
+                nationality: 'England',
+                height: '177 cm',
+                weight: '71 kg',
+                injured: false,
+                photo: 'https://media.api-sports.io/football/players/1456.png'
+            },
+            statistics: [
+                {
+                    team: {
+                        id: 42,
+                        name: 'Arsenal',
+                        logo: 'https://media.api-sports.io/football/teams/42.png'
+                    },
+                    league: {
+                        id: 39,
+                        name: 'Premier League',
+                        country: 'England',
+                        logo: 'https://media.api-sports.io/football/leagues/39.png',
+                        flag: 'https://media.api-sports.io/flags/gb.svg',
+                        season: 2021
+                    },
+                    games: {
+                        appearences: 8,
+                        lineups: 2,
+                        minutes: 263,
+                        number: null,
+                        position: 'Midfielder',
+                        rating: '6.500000',
+                        captain: false
+                    },
+                    substitutes: {
+                        in: 6,
+                        out: 1,
+                        bench: 15
+                    },
+                    shots: {
+                        total: 1,
+                        on: null
+                    },
+                    goals: {
+                        total: 0,
+                        conceded: 0,
+                        assists: null,
+                        saves: null
+                    },
+                    passes: {
+                        total: 135,
+                        key: 3,
+                        accuracy: 14
+                    },
+                    tackles: {
+                        total: 8,
+                        blocks: null,
+                        interceptions: 4
+                    },
+                    duels: {
+                        total: 36,
+                        won: 18
+                    },
+                    dribbles: {
+                        attempts: 8,
+                        success: 4,
+                        past: null
+                    },
+                    fouls: {
+                        drawn: 3,
+                        committed: 4
+                    },
+                    cards: {
+                        yellow: 0,
+                        yellowred: 0,
+                        red: 0
+                    },
+                    penalty: {
+                        won: null,
+                        commited: null,
+                        scored: 0,
+                        missed: 0,
+                        saved: null
+                    }
+                }
+            ]
+        },
+        {
+            player: {
+                id: 46792,
+                name: 'Pablo Marí',
+                firstname: 'Pablo',
+                lastname: 'Marí Villar',
+                age: 29,
+                birth: {
+                    date: '1993-08-31',
+                    place: 'Valencia',
+                    country: 'Spain'
+                },
+                nationality: 'Spain',
+                height: '193 cm',
+                weight: '87 kg',
+                injured: false,
+                photo: 'https://media.api-sports.io/football/players/46792.png'
+            },
+            statistics: [
+                {
+                    team: {
+                        id: 42,
+                        name: 'Arsenal',
+                        logo: 'https://media.api-sports.io/football/teams/42.png'
+                    },
+                    league: {
+                        id: 39,
+                        name: 'Premier League',
+                        country: 'England',
+                        logo: 'https://media.api-sports.io/football/leagues/39.png',
+                        flag: 'https://media.api-sports.io/flags/gb.svg',
+                        season: 2021
+                    },
+                    games: {
+                        appearences: 2,
+                        lineups: 2,
+                        minutes: 180,
+                        number: null,
+                        position: 'Defender',
+                        rating: '6.750000',
+                        captain: false
+                    },
+                    substitutes: {
+                        in: 0,
+                        out: 0,
+                        bench: 4
+                    },
+                    shots: {
+                        total: 1,
+                        on: null
+                    },
+                    goals: {
+                        total: 0,
+                        conceded: 0,
+                        assists: null,
+                        saves: null
+                    },
+                    passes: {
+                        total: 92,
+                        key: 1,
+                        accuracy: 39
+                    },
+                    tackles: {
+                        total: 5,
+                        blocks: 4,
+                        interceptions: 3
+                    },
+                    duels: {
+                        total: 18,
+                        won: 11
+                    },
+                    dribbles: {
+                        attempts: null,
+                        success: null,
+                        past: null
+                    },
+                    fouls: {
+                        drawn: 1,
+                        committed: 1
+                    },
+                    cards: {
+                        yellow: 1,
+                        yellowred: 0,
+                        red: 0
+                    },
+                    penalty: {
+                        won: null,
+                        commited: null,
+                        scored: 0,
+                        missed: 0,
+                        saved: null
+                    }
+                }
+            ]
+        },
         {
             player: {
                 id: 1438,
@@ -294,6 +675,196 @@ export const TEST_PLAYERS_RESPONSE = {
                         scored: 0,
                         missed: 0,
                         saved: 0
+                    }
+                }
+            ]
+        },
+        {
+            player: {
+                id: 1117,
+                name: 'K. Tierney',
+                firstname: 'Kieran',
+                lastname: 'Tierney',
+                age: 25,
+                birth: {
+                    date: '1997-06-05',
+                    place: 'Douglas',
+                    country: 'Isle of Man'
+                },
+                nationality: 'Scotland',
+                height: '178 cm',
+                weight: '70 kg',
+                injured: false,
+                photo: 'https://media.api-sports.io/football/players/1117.png'
+            },
+            statistics: [
+                {
+                    team: {
+                        id: 42,
+                        name: 'Arsenal',
+                        logo: 'https://media.api-sports.io/football/teams/42.png'
+                    },
+                    league: {
+                        id: 39,
+                        name: 'Premier League',
+                        country: 'England',
+                        logo: 'https://media.api-sports.io/football/leagues/39.png',
+                        flag: 'https://media.api-sports.io/flags/gb.svg',
+                        season: 2021
+                    },
+                    games: {
+                        appearences: 22,
+                        lineups: 22,
+                        minutes: 1919,
+                        number: null,
+                        position: 'Defender',
+                        rating: '6.963636',
+                        captain: false
+                    },
+                    substitutes: {
+                        in: 0,
+                        out: 4,
+                        bench: 4
+                    },
+                    shots: {
+                        total: 10,
+                        on: 5
+                    },
+                    goals: {
+                        total: 1,
+                        conceded: 0,
+                        assists: 3,
+                        saves: null
+                    },
+                    passes: {
+                        total: 904,
+                        key: 20,
+                        accuracy: 33
+                    },
+                    tackles: {
+                        total: 18,
+                        blocks: 5,
+                        interceptions: 15
+                    },
+                    duels: {
+                        total: 105,
+                        won: 55
+                    },
+                    dribbles: {
+                        attempts: 23,
+                        success: 9,
+                        past: null
+                    },
+                    fouls: {
+                        drawn: 16,
+                        committed: 5
+                    },
+                    cards: {
+                        yellow: 0,
+                        yellowred: 0,
+                        red: 0
+                    },
+                    penalty: {
+                        won: null,
+                        commited: null,
+                        scored: 0,
+                        missed: 0,
+                        saved: null
+                    }
+                }
+            ]
+        },
+        {
+            player: {
+                id: 19959,
+                name: 'Benjamin White',
+                firstname: 'Benjamin',
+                lastname: 'White',
+                age: 25,
+                birth: {
+                    date: '1997-10-08',
+                    place: 'Poole',
+                    country: 'England'
+                },
+                nationality: 'England',
+                height: '185 cm',
+                weight: '78 kg',
+                injured: false,
+                photo: 'https://media.api-sports.io/football/players/19959.png'
+            },
+            statistics: [
+                {
+                    team: {
+                        id: 42,
+                        name: 'Arsenal',
+                        logo: 'https://media.api-sports.io/football/teams/42.png'
+                    },
+                    league: {
+                        id: 39,
+                        name: 'Premier League',
+                        country: 'England',
+                        logo: 'https://media.api-sports.io/football/leagues/39.png',
+                        flag: 'https://media.api-sports.io/flags/gb.svg',
+                        season: 2021
+                    },
+                    games: {
+                        appearences: 28,
+                        lineups: 28,
+                        minutes: 2520,
+                        number: null,
+                        position: 'Defender',
+                        rating: '6.953571',
+                        captain: false
+                    },
+                    substitutes: {
+                        in: 0,
+                        out: 0,
+                        bench: 0
+                    },
+                    shots: {
+                        total: 8,
+                        on: 4
+                    },
+                    goals: {
+                        total: 0,
+                        conceded: 0,
+                        assists: null,
+                        saves: null
+                    },
+                    passes: {
+                        total: 1605,
+                        key: 13,
+                        accuracy: 48
+                    },
+                    tackles: {
+                        total: 34,
+                        blocks: 19,
+                        interceptions: 40
+                    },
+                    duels: {
+                        total: 206,
+                        won: 121
+                    },
+                    dribbles: {
+                        attempts: 19,
+                        success: 10,
+                        past: null
+                    },
+                    fouls: {
+                        drawn: 25,
+                        committed: 14
+                    },
+                    cards: {
+                        yellow: 1,
+                        yellowred: 0,
+                        red: 0
+                    },
+                    penalty: {
+                        won: null,
+                        commited: null,
+                        scored: 0,
+                        missed: 0,
+                        saved: null
                     }
                 }
             ]
@@ -681,7 +1252,7 @@ export const TEST_PLAYERS_RESPONSE = {
         {
             player: {
                 id: 41577,
-                name: 'Nuno Tavares',
+                name: 'Nuno Albertino Varela Tavares',
                 firstname: 'Nuno Albertino',
                 lastname: 'Varela Tavares',
                 age: 22,
@@ -776,7 +1347,7 @@ export const TEST_PLAYERS_RESPONSE = {
         {
             player: {
                 id: 138841,
-                name: 'M. Ogungbo',
+                name: 'Mazeed Ogungbo',
                 firstname: 'Mazeed',
                 lastname: 'Ogungbo',
                 age: 20,
@@ -871,7 +1442,7 @@ export const TEST_PLAYERS_RESPONSE = {
         {
             player: {
                 id: 284420,
-                name: 'Z. Awe',
+                name: 'Zachariah Olumide Awe',
                 firstname: 'Zachariah Olumide',
                 lastname: 'Awe',
                 age: 18,
@@ -965,21 +1536,21 @@ export const TEST_PLAYERS_RESPONSE = {
         },
         {
             player: {
-                id: 278074,
-                name: 'S. Oulad M&apos;Hand',
-                firstname: 'Salah',
-                lastname: 'Oulad M\'Hand',
-                age: 19,
+                id: 49,
+                name: 'T. Partey',
+                firstname: 'Thomas',
+                lastname: 'Partey',
+                age: 29,
                 birth: {
-                    date: '2003-08-20',
-                    place: null,
-                    country: 'Netherlands'
+                    date: '1993-06-13',
+                    place: 'Odumase Krobo',
+                    country: 'Ghana'
                 },
-                nationality: 'Netherlands',
-                height: null,
-                weight: null,
+                nationality: 'Ghana',
+                height: '185 cm',
+                weight: '77 kg',
                 injured: false,
-                photo: 'https://media.api-sports.io/football/players/278074.png'
+                photo: 'https://media.api-sports.io/football/players/49.png'
             },
             statistics: [
                 {
@@ -997,624 +1568,54 @@ export const TEST_PLAYERS_RESPONSE = {
                         season: 2021
                     },
                     games: {
-                        appearences: 0,
-                        lineups: 0,
-                        minutes: 0,
+                        appearences: 24,
+                        lineups: 23,
+                        minutes: 2032,
                         number: null,
                         position: 'Midfielder',
-                        rating: null,
+                        rating: '6.987500',
                         captain: false
                     },
                     substitutes: {
-                        in: 0,
-                        out: 0,
+                        in: 1,
+                        out: 6,
                         bench: 1
                     },
                     shots: {
-                        total: null,
-                        on: null
+                        total: 30,
+                        on: 10
                     },
                     goals: {
-                        total: 0,
-                        conceded: 0,
-                        assists: null,
-                        saves: null
-                    },
-                    passes: {
-                        total: null,
-                        key: null,
-                        accuracy: null
-                    },
-                    tackles: {
-                        total: null,
-                        blocks: null,
-                        interceptions: null
-                    },
-                    duels: {
-                        total: null,
-                        won: null
-                    },
-                    dribbles: {
-                        attempts: null,
-                        success: null,
-                        past: null
-                    },
-                    fouls: {
-                        drawn: null,
-                        committed: null
-                    },
-                    cards: {
-                        yellow: 0,
-                        yellowred: 0,
-                        red: 0
-                    },
-                    penalty: {
-                        won: null,
-                        commited: null,
-                        scored: 0,
-                        missed: 0,
-                        saved: null
-                    }
-                }
-            ]
-        },
-        {
-            player: {
-                id: 138783,
-                name: 'Z. Swanson',
-                firstname: 'Zachary',
-                lastname: 'Swanson',
-                age: 22,
-                birth: {
-                    date: '2000-09-28',
-                    place: null,
-                    country: 'England'
-                },
-                nationality: 'England',
-                height: null,
-                weight: null,
-                injured: false,
-                photo: 'https://media.api-sports.io/football/players/138783.png'
-            },
-            statistics: [
-                {
-                    team: {
-                        id: 42,
-                        name: 'Arsenal',
-                        logo: 'https://media.api-sports.io/football/teams/42.png'
-                    },
-                    league: {
-                        id: 39,
-                        name: 'Premier League',
-                        country: 'England',
-                        logo: 'https://media.api-sports.io/football/leagues/39.png',
-                        flag: 'https://media.api-sports.io/flags/gb.svg',
-                        season: 2021
-                    },
-                    games: {
-                        appearences: 0,
-                        lineups: 0,
-                        minutes: 0,
-                        number: null,
-                        position: 'Midfielder',
-                        rating: null,
-                        captain: false
-                    },
-                    substitutes: {
-                        in: 0,
-                        out: 0,
-                        bench: 7
-                    },
-                    shots: {
-                        total: null,
-                        on: null
-                    },
-                    goals: {
-                        total: 0,
-                        conceded: 0,
-                        assists: null,
-                        saves: null
-                    },
-                    passes: {
-                        total: null,
-                        key: null,
-                        accuracy: null
-                    },
-                    tackles: {
-                        total: null,
-                        blocks: null,
-                        interceptions: null
-                    },
-                    duels: {
-                        total: null,
-                        won: null
-                    },
-                    dribbles: {
-                        attempts: null,
-                        success: null,
-                        past: null
-                    },
-                    fouls: {
-                        drawn: null,
-                        committed: null
-                    },
-                    cards: {
-                        yellow: 0,
-                        yellowred: 0,
-                        red: 0
-                    },
-                    penalty: {
-                        won: null,
-                        commited: null,
-                        scored: 0,
-                        missed: 0,
-                        saved: null
-                    }
-                }
-            ]
-        },
-        {
-            player: {
-                id: 284061,
-                name: 'M. Flores',
-                firstname: 'Marcelo',
-                lastname: 'Flores Dorrell',
-                age: 19,
-                birth: {
-                    date: '2003-10-01',
-                    place: null,
-                    country: 'Mexico'
-                },
-                nationality: 'Mexico',
-                height: null,
-                weight: null,
-                injured: false,
-                photo: 'https://media.api-sports.io/football/players/284061.png'
-            },
-            statistics: [
-                {
-                    team: {
-                        id: 42,
-                        name: 'Arsenal',
-                        logo: 'https://media.api-sports.io/football/teams/42.png'
-                    },
-                    league: {
-                        id: 39,
-                        name: 'Premier League',
-                        country: 'England',
-                        logo: 'https://media.api-sports.io/football/leagues/39.png',
-                        flag: 'https://media.api-sports.io/flags/gb.svg',
-                        season: 2021
-                    },
-                    games: {
-                        appearences: 0,
-                        lineups: 0,
-                        minutes: 0,
-                        number: null,
-                        position: 'Midfielder',
-                        rating: null,
-                        captain: false
-                    },
-                    substitutes: {
-                        in: 0,
-                        out: 0,
-                        bench: 1
-                    },
-                    shots: {
-                        total: null,
-                        on: null
-                    },
-                    goals: {
-                        total: 0,
-                        conceded: 0,
-                        assists: null,
-                        saves: null
-                    },
-                    passes: {
-                        total: null,
-                        key: null,
-                        accuracy: null
-                    },
-                    tackles: {
-                        total: null,
-                        blocks: null,
-                        interceptions: null
-                    },
-                    duels: {
-                        total: null,
-                        won: null
-                    },
-                    dribbles: {
-                        attempts: null,
-                        success: null,
-                        past: null
-                    },
-                    fouls: {
-                        drawn: null,
-                        committed: null
-                    },
-                    cards: {
-                        yellow: 0,
-                        yellowred: 0,
-                        red: 0
-                    },
-                    penalty: {
-                        won: null,
-                        commited: null,
-                        scored: 0,
-                        missed: 0,
-                        saved: null
-                    }
-                }
-            ]
-        },
-        {
-            player: {
-                id: 284428,
-                name: 'O. Giraud-Hutchinson',
-                firstname: 'Omari',
-                lastname: 'Giraud-Hutchinson',
-                age: 19,
-                birth: {
-                    date: '2003-10-29',
-                    place: null,
-                    country: 'England'
-                },
-                nationality: 'England',
-                height: null,
-                weight: null,
-                injured: false,
-                photo: 'https://media.api-sports.io/football/players/284428.png'
-            },
-            statistics: [
-                {
-                    team: {
-                        id: 42,
-                        name: 'Arsenal',
-                        logo: 'https://media.api-sports.io/football/teams/42.png'
-                    },
-                    league: {
-                        id: 39,
-                        name: 'Premier League',
-                        country: 'England',
-                        logo: 'https://media.api-sports.io/football/leagues/39.png',
-                        flag: 'https://media.api-sports.io/flags/gb.svg',
-                        season: 2021
-                    },
-                    games: {
-                        appearences: 0,
-                        lineups: 0,
-                        minutes: 0,
-                        number: null,
-                        position: 'Midfielder',
-                        rating: null,
-                        captain: false
-                    },
-                    substitutes: {
-                        in: 0,
-                        out: 0,
-                        bench: 6
-                    },
-                    shots: {
-                        total: null,
-                        on: null
-                    },
-                    goals: {
-                        total: 0,
-                        conceded: 0,
-                        assists: null,
-                        saves: null
-                    },
-                    passes: {
-                        total: null,
-                        key: null,
-                        accuracy: null
-                    },
-                    tackles: {
-                        total: null,
-                        blocks: null,
-                        interceptions: null
-                    },
-                    duels: {
-                        total: null,
-                        won: null
-                    },
-                    dribbles: {
-                        attempts: null,
-                        success: null,
-                        past: null
-                    },
-                    fouls: {
-                        drawn: null,
-                        committed: null
-                    },
-                    cards: {
-                        yellow: 0,
-                        yellowred: 0,
-                        red: 0
-                    },
-                    penalty: {
-                        won: null,
-                        commited: null,
-                        scored: 0,
-                        missed: 0,
-                        saved: null
-                    }
-                }
-            ]
-        },
-        {
-            player: {
-                id: 138842,
-                name: 'M. Azeez',
-                firstname: 'Miguel',
-                lastname: 'Azeez',
-                age: 20,
-                birth: {
-                    date: '2002-09-20',
-                    place: null,
-                    country: 'England'
-                },
-                nationality: 'England',
-                height: '180 cm',
-                weight: null,
-                injured: false,
-                photo: 'https://media.api-sports.io/football/players/138842.png'
-            },
-            statistics: [
-                {
-                    team: {
-                        id: 42,
-                        name: 'Arsenal',
-                        logo: 'https://media.api-sports.io/football/teams/42.png'
-                    },
-                    league: {
-                        id: 39,
-                        name: 'Premier League',
-                        country: 'England',
-                        logo: 'https://media.api-sports.io/football/leagues/39.png',
-                        flag: 'https://media.api-sports.io/flags/gb.svg',
-                        season: 2021
-                    },
-                    games: {
-                        appearences: 0,
-                        lineups: 0,
-                        minutes: 0,
-                        number: null,
-                        position: 'Midfielder',
-                        rating: null,
-                        captain: false
-                    },
-                    substitutes: {
-                        in: 0,
-                        out: 0,
-                        bench: 1
-                    },
-                    shots: {
-                        total: null,
-                        on: null
-                    },
-                    goals: {
-                        total: 0,
-                        conceded: 0,
-                        assists: null,
-                        saves: null
-                    },
-                    passes: {
-                        total: null,
-                        key: null,
-                        accuracy: null
-                    },
-                    tackles: {
-                        total: null,
-                        blocks: null,
-                        interceptions: null
-                    },
-                    duels: {
-                        total: null,
-                        won: null
-                    },
-                    dribbles: {
-                        attempts: null,
-                        success: null,
-                        past: null
-                    },
-                    fouls: {
-                        drawn: null,
-                        committed: null
-                    },
-                    cards: {
-                        yellow: 0,
-                        yellowred: 0,
-                        red: 0
-                    },
-                    penalty: {
-                        won: null,
-                        commited: null,
-                        scored: 0,
-                        missed: 0,
-                        saved: null
-                    }
-                }
-            ]
-        },
-        {
-            player: {
-                id: 1467,
-                name: 'A. Lacazette',
-                firstname: 'Alexandre',
-                lastname: 'Lacazette',
-                age: 31,
-                birth: {
-                    date: '1991-05-28',
-                    place: 'Lyon',
-                    country: 'France'
-                },
-                nationality: 'France',
-                height: '175 cm',
-                weight: '73 kg',
-                injured: false,
-                photo: 'https://media.api-sports.io/football/players/1467.png'
-            },
-            statistics: [
-                {
-                    team: {
-                        id: 42,
-                        name: 'Arsenal',
-                        logo: 'https://media.api-sports.io/football/teams/42.png'
-                    },
-                    league: {
-                        id: 39,
-                        name: 'Premier League',
-                        country: 'England',
-                        logo: 'https://media.api-sports.io/football/leagues/39.png',
-                        flag: 'https://media.api-sports.io/flags/gb.svg',
-                        season: 2021
-                    },
-                    games: {
-                        appearences: 25,
-                        lineups: 20,
-                        minutes: 1718,
-                        number: null,
-                        position: 'Attacker',
-                        rating: '7.012000',
-                        captain: false
-                    },
-                    substitutes: {
-                        in: 5,
-                        out: 14,
-                        bench: 8
-                    },
-                    shots: {
-                        total: 33,
-                        on: 15
-                    },
-                    goals: {
-                        total: 4,
-                        conceded: 0,
-                        assists: 7,
-                        saves: null
-                    },
-                    passes: {
-                        total: 425,
-                        key: 29,
-                        accuracy: 12
-                    },
-                    tackles: {
-                        total: 27,
-                        blocks: 1,
-                        interceptions: 5
-                    },
-                    duels: {
-                        total: 218,
-                        won: 93
-                    },
-                    dribbles: {
-                        attempts: 32,
-                        success: 19,
-                        past: null
-                    },
-                    fouls: {
-                        drawn: 27,
-                        committed: 28
-                    },
-                    cards: {
-                        yellow: 0,
-                        yellowred: 0,
-                        red: 0
-                    },
-                    penalty: {
-                        won: null,
-                        commited: null,
-                        scored: 2,
-                        missed: 1,
-                        saved: null
-                    }
-                }
-            ]
-        },
-        {
-            player: {
-                id: 1468,
-                name: 'E. Nketiah',
-                firstname: 'Edward',
-                lastname: 'Nketiah',
-                age: 23,
-                birth: {
-                    date: '1999-05-30',
-                    place: null,
-                    country: 'England'
-                },
-                nationality: 'England',
-                height: '175 cm',
-                weight: '72 kg',
-                injured: false,
-                photo: 'https://media.api-sports.io/football/players/1468.png'
-            },
-            statistics: [
-                {
-                    team: {
-                        id: 42,
-                        name: 'Arsenal',
-                        logo: 'https://media.api-sports.io/football/teams/42.png'
-                    },
-                    league: {
-                        id: 39,
-                        name: 'Premier League',
-                        country: 'England',
-                        logo: 'https://media.api-sports.io/football/leagues/39.png',
-                        flag: 'https://media.api-sports.io/flags/gb.svg',
-                        season: 2021
-                    },
-                    games: {
-                        appearences: 13,
-                        lineups: 0,
-                        minutes: 166,
-                        number: null,
-                        position: 'Attacker',
-                        rating: '6.492307',
-                        captain: false
-                    },
-                    substitutes: {
-                        in: 13,
-                        out: 0,
-                        bench: 18
-                    },
-                    shots: {
-                        total: 5,
-                        on: 1
-                    },
-                    goals: {
-                        total: 0,
+                        total: 2,
                         conceded: 0,
                         assists: 1,
                         saves: null
                     },
                     passes: {
-                        total: 77,
-                        key: 6,
-                        accuracy: 5
+                        total: 1205,
+                        key: 17,
+                        accuracy: 42
                     },
                     tackles: {
-                        total: 5,
-                        blocks: null,
-                        interceptions: 1
+                        total: 43,
+                        blocks: 4,
+                        interceptions: 23
                     },
                     duels: {
-                        total: 44,
-                        won: 12
+                        total: 227,
+                        won: 118
                     },
                     dribbles: {
-                        attempts: 10,
-                        success: 6,
+                        attempts: 43,
+                        success: 35,
                         past: null
                     },
                     fouls: {
-                        drawn: 1,
-                        committed: 12
+                        drawn: 17,
+                        committed: 33
                     },
                     cards: {
-                        yellow: 1,
+                        yellow: 5,
                         yellowred: 0,
                         red: 0
                     },
@@ -1630,21 +1631,21 @@ export const TEST_PLAYERS_RESPONSE = {
         },
         {
             player: {
-                id: 127769,
-                name: 'Gabriel Martinelli',
-                firstname: 'Gabriel Teodoro',
-                lastname: 'Martinelli Silva',
-                age: 21,
+                id: 37127,
+                name: 'Martin Ødegaard',
+                firstname: 'Martin',
+                lastname: 'Ødegaard',
+                age: 24,
                 birth: {
-                    date: '2001-06-18',
-                    place: 'Guarulhos',
-                    country: 'Brazil'
+                    date: '1998-12-17',
+                    place: 'Drammen',
+                    country: 'Norway'
                 },
-                nationality: 'Brazil',
+                nationality: 'Norway',
                 height: '178 cm',
-                weight: '75 kg',
+                weight: '68 kg',
                 injured: false,
-                photo: 'https://media.api-sports.io/football/players/127769.png'
+                photo: 'https://media.api-sports.io/football/players/37127.png'
             },
             statistics: [
                 {
@@ -1662,55 +1663,55 @@ export const TEST_PLAYERS_RESPONSE = {
                         season: 2021
                     },
                     games: {
-                        appearences: 21,
-                        lineups: 16,
-                        minutes: 1369,
+                        appearences: 28,
+                        lineups: 24,
+                        minutes: 2073,
                         number: null,
-                        position: 'Attacker',
-                        rating: '6.926315',
+                        position: 'Midfielder',
+                        rating: '6.992857',
                         captain: false
                     },
                     substitutes: {
-                        in: 5,
-                        out: 9,
-                        bench: 12
+                        in: 4,
+                        out: 11,
+                        bench: 4
                     },
                     shots: {
-                        total: 29,
-                        on: 11
+                        total: 20,
+                        on: 14
                     },
                     goals: {
-                        total: 5,
+                        total: 6,
                         conceded: 0,
                         assists: 3,
                         saves: null
                     },
                     passes: {
-                        total: 353,
-                        key: 25,
-                        accuracy: 13
+                        total: 1155,
+                        key: 53,
+                        accuracy: 34
                     },
                     tackles: {
-                        total: 22,
+                        total: 40,
                         blocks: 1,
-                        interceptions: 15
+                        interceptions: 7
                     },
                     duels: {
-                        total: 182,
-                        won: 77
+                        total: 201,
+                        won: 84
                     },
                     dribbles: {
-                        attempts: 48,
-                        success: 29,
+                        attempts: 28,
+                        success: 17,
                         past: null
                     },
                     fouls: {
-                        drawn: 14,
-                        committed: 19
+                        drawn: 16,
+                        committed: 22
                     },
                     cards: {
-                        yellow: 2,
-                        yellowred: 1,
+                        yellow: 3,
+                        yellowred: 0,
                         red: 0
                     },
                     penalty: {
@@ -1725,21 +1726,21 @@ export const TEST_PLAYERS_RESPONSE = {
         },
         {
             player: {
-                id: 283026,
-                name: 'M. Biereth',
-                firstname: 'Mika',
-                lastname: 'Miles Biereth',
-                age: 19,
+                id: 1161,
+                name: 'Emile Smith Rowe',
+                firstname: 'Emile',
+                lastname: 'Smith Rowe',
+                age: 22,
                 birth: {
-                    date: '2003-02-08',
-                    place: null,
+                    date: '2000-07-28',
+                    place: 'Croydon',
                     country: 'England'
                 },
-                nationality: 'Denmark',
-                height: null,
-                weight: null,
+                nationality: 'England',
+                height: '182 cm',
+                weight: '79 kg',
                 injured: false,
-                photo: 'https://media.api-sports.io/football/players/283026.png'
+                photo: 'https://media.api-sports.io/football/players/1161.png'
             },
             statistics: [
                 {
@@ -1757,51 +1758,51 @@ export const TEST_PLAYERS_RESPONSE = {
                         season: 2021
                     },
                     games: {
-                        appearences: 0,
-                        lineups: 0,
-                        minutes: 0,
+                        appearences: 26,
+                        lineups: 18,
+                        minutes: 1657,
                         number: null,
-                        position: 'Attacker',
-                        rating: null,
+                        position: 'Midfielder',
+                        rating: '6.957692',
                         captain: false
                     },
                     substitutes: {
-                        in: 0,
-                        out: 0,
-                        bench: 1
+                        in: 8,
+                        out: 8,
+                        bench: 9
                     },
                     shots: {
-                        total: null,
-                        on: null
+                        total: 28,
+                        on: 21
                     },
                     goals: {
-                        total: 0,
+                        total: 9,
                         conceded: 0,
-                        assists: null,
+                        assists: 2,
                         saves: null
                     },
                     passes: {
-                        total: null,
-                        key: null,
-                        accuracy: null
+                        total: 686,
+                        key: 27,
+                        accuracy: 22
                     },
                     tackles: {
-                        total: null,
-                        blocks: null,
-                        interceptions: null
+                        total: 10,
+                        blocks: 1,
+                        interceptions: 13
                     },
                     duels: {
-                        total: null,
-                        won: null
+                        total: 135,
+                        won: 63
                     },
                     dribbles: {
-                        attempts: null,
-                        success: null,
+                        attempts: 45,
+                        success: 28,
                         past: null
                     },
                     fouls: {
-                        drawn: null,
-                        committed: null
+                        drawn: 20,
+                        committed: 4
                     },
                     cards: {
                         yellow: 0,
@@ -1820,21 +1821,21 @@ export const TEST_PLAYERS_RESPONSE = {
         },
         {
             player: {
-                id: 284466,
-                name: 'C. Patino',
-                firstname: 'Charlie',
-                lastname: 'Patino',
-                age: 19,
+                id: 1427,
+                name: 'Albert-Mboyo Sambi Lokonga',
+                firstname: 'Albert-Mboyo',
+                lastname: 'Sambi Lokonga',
+                age: 23,
                 birth: {
-                    date: '2003-10-17',
+                    date: '1999-10-22',
                     place: null,
-                    country: 'England'
+                    country: 'Belgium'
                 },
-                nationality: 'England',
-                height: null,
-                weight: null,
+                nationality: 'Belgium',
+                height: '173 cm',
+                weight: '67 kg',
                 injured: false,
-                photo: 'https://media.api-sports.io/football/players/284466.png'
+                photo: 'https://media.api-sports.io/football/players/1427.png'
             },
             statistics: [
                 {
@@ -1852,22 +1853,22 @@ export const TEST_PLAYERS_RESPONSE = {
                         season: 2021
                     },
                     games: {
-                        appearences: 0,
-                        lineups: 0,
-                        minutes: 0,
+                        appearences: 16,
+                        lineups: 11,
+                        minutes: 1014,
                         number: null,
-                        position: 'Attacker',
-                        rating: null,
+                        position: 'Midfielder',
+                        rating: '6.981250',
                         captain: false
                     },
                     substitutes: {
-                        in: 0,
-                        out: 0,
-                        bench: 2
+                        in: 5,
+                        out: 3,
+                        bench: 18
                     },
                     shots: {
-                        total: null,
-                        on: null
+                        total: 14,
+                        on: 7
                     },
                     goals: {
                         total: 0,
@@ -1876,30 +1877,30 @@ export const TEST_PLAYERS_RESPONSE = {
                         saves: null
                     },
                     passes: {
-                        total: null,
-                        key: null,
-                        accuracy: null
+                        total: 701,
+                        key: 15,
+                        accuracy: 38
                     },
                     tackles: {
-                        total: null,
-                        blocks: null,
-                        interceptions: null
+                        total: 22,
+                        blocks: 7,
+                        interceptions: 13
                     },
                     duels: {
-                        total: null,
-                        won: null
+                        total: 87,
+                        won: 50
                     },
                     dribbles: {
-                        attempts: null,
-                        success: null,
+                        attempts: 3,
+                        success: 3,
                         past: null
                     },
                     fouls: {
-                        drawn: null,
-                        committed: null
+                        drawn: 14,
+                        committed: 11
                     },
                     cards: {
-                        yellow: 0,
+                        yellow: 5,
                         yellowred: 0,
                         red: 0
                     },
