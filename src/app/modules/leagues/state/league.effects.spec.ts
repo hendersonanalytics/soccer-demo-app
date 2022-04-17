@@ -77,11 +77,4 @@ describe('LeagueEffects', () => {
             tick();
         }));
     });
-
-
-
-
-
-
-
 });
