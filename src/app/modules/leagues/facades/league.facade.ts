@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
-import { catchError, filter, map, mergeMap } from 'rxjs/operators';
+import { catchError, filter, map, switchMap } from 'rxjs/operators';
 import { FootballApiLeaguesResponseInfo } from '../models/football-api-leagues-response-info.interface';
 
 import { LeagueQueryParams } from '../models/league-query-params.interface';
@@ -27,9 +27,9 @@ export class LeagueFacade {
     leaguesHasError$: Observable<boolean> = this.store.select(leagueSelectors.selectLeaguesError);
     selectedLeague$: Observable<number> = this.store.select(leagueSelectors.selectLeagueSelected);
 
-    filteredLeagues$: Observable<FootballApiLeaguesResponseInfo[]> = this.selectedCountry$.pipe(
+    leagues$: Observable<FootballApiLeaguesResponseInfo[]> = this.selectedCountry$.pipe(
         filter((country) => Boolean(country)  === true),
-        mergeMap((country) => {
+        switchMap((country) => {
             return this.allLeagues$.pipe(
                 map(leagues => leagues.filter(league => league.country.name === country)),
                 catchError(() => of([]))
@@ -47,5 +47,17 @@ export class LeagueFacade {
 
     fetchSeasons(): void {
         this.store.dispatch(leagueActions.fetchSeasons());
+    }
+
+    selectSeason(season: number): void {
+        this.store.dispatch(leagueActions.selectSeason({season}));
+    }
+
+    selectCountry(country: string): void {
+        this.store.dispatch(leagueActions.selectCountry({country}));
+    }
+
+    selectLeague(league: number): void {
+        this.store.dispatch(leagueActions.selectLeague({league}));
     }
 }

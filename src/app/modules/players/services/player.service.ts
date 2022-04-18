@@ -5,7 +5,7 @@ import { PlayerQueryParams } from '../models/player-query-params.interface';
 import { apiConfig } from 'src/app/configs/api.config';
 import { FootballApiPlayersResponse } from '../models/football-api-players-response.interface';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class PlayerService {
     constructor(private httpClient: HttpClient) {}
 

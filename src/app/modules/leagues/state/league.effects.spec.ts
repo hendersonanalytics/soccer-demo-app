@@ -9,6 +9,7 @@ import * as fromReducer from './league.reducer';
 import { TEST_LEAGUES_RESPONSE } from 'src/app/support/data/test-leagues-response';
 import { TEST_SEASONS_RESPONSE } from 'src/app/support/data/test-seasons-response';
 import { leagueActions } from './league.actions';
+import { LEAGUE_ACTIONS } from '../enums/league-actions.enum';
 
 describe('LeagueEffects', () => {
     let effects: LeagueEffects;
@@ -73,6 +74,24 @@ describe('LeagueEffects', () => {
             actions$ = of(leagueActions.fetchLeagues);
             effects.fetchLeagues$.subscribe((result) => {
                 expect(result).toEqual(leagueActions.fetchLeaguesFail());
+            });
+            tick();
+        }));
+    });
+
+    describe('selectSeason$', () => {
+        it('returns the expected action when a season is selected', fakeAsync(() => {
+            const season = 2021;
+
+            const ACTION_ARG = {
+                type: LEAGUE_ACTIONS.SELECT_SEASON,
+                season
+            };
+
+            const expectedArg = { queryParams: {season} };
+            actions$ = of(leagueActions.selectSeason(ACTION_ARG));
+            effects.selectSeason$.subscribe((result) => {
+                expect(result).toEqual(leagueActions.fetchLeagues(expectedArg));
             });
             tick();
         }));

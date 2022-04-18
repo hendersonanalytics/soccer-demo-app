@@ -6,7 +6,7 @@ import { apiConfig } from 'src/app/configs/api.config';
 import { FootballApiSeasonsResponse } from '../models/football-api-seasons-response.interface';
 import { FootballApiLeaguesResponse } from '../models/football-api-leagues-response.interface';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class LeagueService {
     constructor(private httpClient: HttpClient) {}
 

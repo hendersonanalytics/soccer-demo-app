@@ -7,8 +7,6 @@ import { LeagueQueryParams } from '../models/league-query-params.interface';
 const fetchSeasons = createAction(LEAGUE_ACTIONS.FETCH_SEASONS);
 const fetchSeasonsFail = createAction(LEAGUE_ACTIONS.FETCH_SEASONS_FAIL);
 
-const fakeAction = createAction('fakeAction');
-
 const fetchSeasonsSuccess = createAction(
     LEAGUE_ACTIONS.FETCH_SEASONS_SUCCESS,
     props<{ response: FootballApiSeasonsResponse }>()
@@ -28,12 +26,12 @@ const fetchLeaguesSuccess = createAction(
 
 const selectSeason = createAction(
     LEAGUE_ACTIONS.SELECT_SEASON,
-    props<{ season: string }>()
+    props<{ season: number }>()
 );
 
 const selectLeague = createAction(
     LEAGUE_ACTIONS.SELECT_LEAGUE,
-    props<{ league: string }>()
+    props<{ league: number }>()
 );
 
 const selectCountry = createAction(
@@ -42,7 +40,6 @@ const selectCountry = createAction(
 );
 
 export const leagueActions = {
-    fakeAction,
     fetchSeasons,
     fetchSeasonsFail,
     fetchSeasonsSuccess,

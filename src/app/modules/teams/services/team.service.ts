@@ -1,5 +1,3 @@
-
-
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
@@ -7,7 +5,7 @@ import { TeamQueryParams } from '../models/team-query-params.interface';
 import { apiConfig } from 'src/app/configs/api.config';
 import { FootballApiTeamsResponse } from '../models/football-api-teams-response.interface';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class TeamService {
     constructor(private httpClient: HttpClient) {}
 

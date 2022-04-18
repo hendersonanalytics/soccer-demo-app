@@ -87,12 +87,12 @@ const reducer = createReducer(
     }),
     on(leagueActions.selectLeague, (state, action) => {
         const clonedState = cloneDeep(state);
-        clonedState.leagues.selected = parseInt(action.league, 10);
+        clonedState.leagues.selected = action.league;
         return clonedState;
     }),
     on(leagueActions.selectSeason, (state, action) => {
         const clonedState = cloneDeep(state);
-        clonedState.seasons.selected = parseInt(action.season, 10);
+        clonedState.seasons.selected = action.season;
         return clonedState;
     }),
 );

@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Football App
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,40 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">League Options</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-list>
+    <ion-item *ngIf="seasons$ | async as seasons">
+      <ion-label>Select a season</ion-label>
+      <ion-select placeholder="Pick one!" (ionChange)="onChangeSeason(($event))">
+        <ion-select-option *ngFor="let season of seasons" [value]="season">
+          {{season}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="countries$ | async as countries">
+      <ion-label>Select a country</ion-label>
+      <ion-select placeholder="Pick one!" (ionChange)="onChangeCountry($event)">
+        <ion-select-option *ngFor="let country of countries" [value]="country">
+          {{country}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-list *ngIf="leagues$ | async as leagues">
+      <ion-item *ngFor="let league of leagues" (click)="onSelectLeague(league.league.id)">
+        <ion-avatar slot="start">
+          <img [src]="league.league.logo" alt="logo">
+        </ion-avatar>
+        <ion-label>{{league.league.name}}</ion-label>
+      </ion-item>
+
+    </ion-list>
+
+  </ion-list>
+
+
 </ion-content>

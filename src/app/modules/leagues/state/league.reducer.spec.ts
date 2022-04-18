@@ -124,7 +124,7 @@ describe('League reducer', () => {
 
 
     it('handles selectSeason action properly', () => {
-        const season = '2021';
+        const season = 2021;
         const available = TEST_SEASONS_RESPONSE.response;
         action = {
             type: LEAGUE_ACTIONS.SELECT_SEASON,
@@ -151,7 +151,7 @@ describe('League reducer', () => {
     });
 
     it('handles selectLeague action properly', () => {
-        const league = '39';
+        const league = 39;
         const available = TEST_LEAGUES_RESPONSE.response;
         action = {
             type: LEAGUE_ACTIONS.SELECT_LEAGUE,

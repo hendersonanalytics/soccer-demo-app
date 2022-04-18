@@ -35,6 +35,17 @@ export class LeagueEffects {
         );
     });
 
+    selectSeason$ = createEffect(() => {
+        return this.action$.pipe(
+            ofType(leagueActions.selectSeason),
+            map((action) => {
+                const { season } = action;
+                const queryParams = {season};
+                return leagueActions.fetchLeagues({queryParams});
+            })
+        );
+    });
+
     constructor(
         private leagueService: LeagueService,
         private action$: Actions
