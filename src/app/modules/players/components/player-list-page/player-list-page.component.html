@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Football App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Team Details</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card *ngIf="team$ | async as team">
+    <ion-item>
+      <ion-avatar slot="start">
+        <img [src]="team?.team?.logo" alt="logo">
+      </ion-avatar>
+      <ion-label data-test="label-team-name">{{team.team.name}}</ion-label>
+    </ion-item>
+    <ion-card-content>
+      Founded: {{team.team.founded}} | Stadium: {{team.venue.name}}
+    </ion-card-content>
+  </ion-card>
+
+    <ion-list *ngIf="players$ | async as players">
+      <ion-item
+        *ngFor="let player of players"
+        data-test="player-list-item"
+      >
+        <ion-avatar slot="start">
+          <img [src]="player.player.photo" alt="player image">
+        </ion-avatar>
+        <ion-label>{{player.player.name}}</ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-button
+      *ngIf="morePlayersAreAvailable$ | async as showMore"
+      expand="block"
+      (click)="onClickShowMore()"
+      data-test="show-more-btn"
+    >
+      Show More
+    </ion-button>
+
+</ion-content>

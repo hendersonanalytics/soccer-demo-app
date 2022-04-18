@@ -18,7 +18,7 @@ const fetchPlayersSuccess = createAction(
 
 const appendPlayers = createAction(
     PLAYER_ACTIONS.APPEND_PLAYERS,
-    props<{ queryParams: PlayerQueryParams }>()
+    // props<{ queryParams?: PlayerQueryParams }>()
 );
 
 const appendPlayersFail = createAction(PLAYER_ACTIONS.APPEND_PLAYERS_FAIL);

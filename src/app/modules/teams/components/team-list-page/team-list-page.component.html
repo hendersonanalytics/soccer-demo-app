@@ -17,7 +17,12 @@
   </ion-header>
 
     <ion-list *ngIf="teams$ | async as teams">
-      <ion-item *ngFor="let team of teams" (click)="onSelectTeam(team.team.id)">
+      <ion-item
+        *ngFor="let team of teams"
+        (click)="onSelectTeam(team.team.id)"
+        routerLink="/team-details"
+        data-test="team-list-item"
+      >
         <ion-avatar slot="start">
           <img [src]="team.team.logo" alt="logo">
         </ion-avatar>

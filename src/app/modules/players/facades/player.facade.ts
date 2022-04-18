@@ -14,6 +14,7 @@ export class PlayerFacade {
     public players$: Observable<FootballApiPlayersResponseInfo[]> = this.store.select(playerSelectors.selectPlayers);
     public morePlayersAreAvailable$: Observable<boolean> = this.store.select(playerSelectors.selectMorePlayersAreAvailable);
     public hasError$: Observable<boolean> = this.store.select(playerSelectors.selectError);
+    public nextPageNumber$: Observable<number> = this.store.select(playerSelectors.selectNextPageNumber);
 
     constructor(private store: Store<PlayerState>) {}
 
@@ -21,7 +22,8 @@ export class PlayerFacade {
         this.store.dispatch(playerActions.fetchPlayers({queryParams}));
     }
 
-    appendPlayers(queryParams: PlayerQueryParams): void {
-        this.store.dispatch(playerActions.appendPlayers({queryParams}));
+    appendPlayers(): void {
+        // this.store.dispatch(playerActions.appendPlayers({queryParams}));
+        this.store.dispatch(playerActions.appendPlayers());
     }
 }

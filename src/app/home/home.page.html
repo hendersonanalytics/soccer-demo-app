@@ -14,26 +14,32 @@
   </ion-header>
 
   <ion-list>
-    <ion-item *ngIf="seasons$ | async as seasons">
-      <ion-label>Select a season</ion-label>
-      <ion-select placeholder="Pick one!" (ionChange)="onChangeSeason(($event))">
-        <ion-select-option *ngFor="let season of seasons" [value]="season">
-          {{season}}
-        </ion-select-option>
-      </ion-select>
-    </ion-item>
+    <ng-container *ngIf="seasons$ | async as seasons">
+      <ion-item *ngIf="seasons?.length > 0">
+          <ion-label>Select a season</ion-label>
+          <ion-select placeholder="Pick one!" (ionChange)="onChangeSeason(($event))">
+            <ion-select-option data-test="season-option-element" *ngFor="let season of seasons" [value]="season">
+              {{season}}
+            </ion-select-option>
+          </ion-select>
+      </ion-item>
+    </ng-container>
 
-    <ion-item *ngIf="countries$ | async as countries">
-      <ion-label>Select a country</ion-label>
-      <ion-select placeholder="Pick one!" (ionChange)="onChangeCountry($event)">
-        <ion-select-option *ngFor="let country of countries" [value]="country">
-          {{country}}
-        </ion-select-option>
-      </ion-select>
-    </ion-item>
+    <ng-container *ngIf="countries$ | async as countries">
+      <ion-item *ngIf="countries?.length > 0">
+        <ng-container >
+          <ion-label>Select a country</ion-label>
+          <ion-select placeholder="Pick one!" (ionChange)="onChangeCountry($event)">
+            <ion-select-option data-test="country-option-element" *ngFor="let country of countries" [value]="country">
+              {{country}}
+            </ion-select-option>
+          </ion-select>
+        </ng-container>
+      </ion-item>
+    </ng-container>
 
     <ion-list *ngIf="leagues$ | async as leagues">
-      <ion-item *ngFor="let league of leagues" routerLink="/teams" (click)="onSelectLeague(league.league.id)">
+      <ion-item data-test="league-option-element" *ngFor="let league of leagues" routerLink="/teams" (click)="onSelectLeague(league.league.id)">
         <ion-avatar slot="start">
           <img [src]="league.league.logo" alt="logo">
         </ion-avatar>

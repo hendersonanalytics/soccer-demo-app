@@ -27,12 +27,14 @@ export class TeamEffects {
     selectLeague$ = createEffect(() => {
         return this.action$.pipe(
             ofType(leagueActions.selectLeague),
-            withLatestFrom(this.leagueFacade.selectedSeason$),
-            map(([action, season]) => {
-                const { league: leagueId } = action;
-                const queryParams = { leagueId, season };
-                return teamActions.fetchTeams({queryParams});
-            })
+            concatMap((action) => of(action).pipe(
+                withLatestFrom(this.leagueFacade.selectedSeason$),
+                map(([pipedAction, season]) => {
+                    const { league: leagueId } = pipedAction;
+                    const queryParams = { leagueId, season };
+                    return teamActions.fetchTeams({queryParams});
+                })
+            ))
         );
     });
 

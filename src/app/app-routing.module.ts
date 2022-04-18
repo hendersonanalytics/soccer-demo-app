@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { TeamListPageComponent } from './modules/teams/components/team-list-page/team-list-page.component';
+import { PlayerListPageComponent } from './modules/players/components/player-list-page/player-list-page.component';
 
 const routes: Routes = [
   {
@@ -12,9 +12,19 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  // {
+  //   path: 'teams',
+  //   component: TeamListPageComponent,
+  //   pathMatch: 'full'
+  // },
   {
     path: 'teams',
-    component: TeamListPageComponent,
+    loadChildren: () => import('./modules/teams/components/team-list-page/team-list.module').then( m => m.TeamListPageModule),
+    pathMatch: 'full'
+  },
+  {
+    path: 'team-details',
+    component: PlayerListPageComponent,
     pathMatch: 'full'
   },
 ];

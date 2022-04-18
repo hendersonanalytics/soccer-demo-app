@@ -5,17 +5,16 @@ import { EffectsModule } from '@ngrx/effects';
 
 import * as fromReducer from './state/team.reducer';
 import { TeamEffects } from './state/team.effects';
-import { TeamListPageComponent } from './components/team-list-page/team-list-page.component';
 import { IonicModule } from '@ionic/angular';
+import { TeamListPageModule } from './components/team-list-page/team-list.module';
 
 @NgModule({
-  declarations: [TeamListPageComponent],
   imports: [
     CommonModule,
     IonicModule,
     StoreModule.forFeature(fromReducer.featureKey, fromReducer.teamReducer),
-    EffectsModule.forFeature([TeamEffects])
-  ],
-  exports: [TeamListPageComponent]
+    EffectsModule.forFeature([TeamEffects]),
+    TeamListPageModule
+  ]
 })
 export class TeamsModule { }
