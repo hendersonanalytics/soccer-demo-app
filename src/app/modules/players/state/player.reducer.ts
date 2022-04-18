@@ -43,6 +43,16 @@ const reducer = createReducer(
         clonedState.morePlayersAreAvailable = paging.current !== paging.total;
         return clonedState;
     }),
+    on(playerActions.appendPlayersSuccess, (state, action) => {
+        const { paging, response } = action.response;
+        const clonedState = cloneDeep(state);
+        clonedState.isLoading = false;
+        clonedState.available = clonedState.available.concat(response);
+        ++clonedState.nextPageNumber;
+        clonedState.paging = paging;
+        clonedState.morePlayersAreAvailable = paging.current !== paging.total;
+        return clonedState;
+    }),
 );
 
 export const playerReducer = (state: PlayerStateInfo, action: Action) => reducer(state, action);

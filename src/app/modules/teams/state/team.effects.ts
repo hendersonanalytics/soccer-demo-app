@@ -4,7 +4,6 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, concatMap, map } from 'rxjs/operators';
 
-
 import { TeamService } from '../services/team.service';
 import { teamActions } from './team.actions';
 

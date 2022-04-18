@@ -2,6 +2,7 @@ import { TEST_PLAYERS_RESPONSE } from 'src/app/support/data/test-players-respons
 import { TEST_PLAYERS_RESPONSE_PAGE_3 } from 'src/app/support/data/test-players-response-page-3';
 import { PLAYER_ACTIONS } from '../enums/player-actions.enum';
 import { PlayerStateInfo } from '../models/player-state-info.interface';
+import { PLAYER_STATE_TEST_DATA } from '../support/data/player-state-test-data';
 import * as fromReducer from './player.reducer';
 
 describe('Player reducer', () => {
@@ -103,7 +104,7 @@ describe('Player reducer', () => {
             const state = fromReducer.playerReducer(initialState, action);
             const expectedState: PlayerStateInfo = {
                 ...initialState,
-                available: initialState.available.concat(response.response),
+                available: PLAYER_STATE_TEST_DATA,
                 nextPageNumber: 4,
                 isLoading: false,
                 paging,
