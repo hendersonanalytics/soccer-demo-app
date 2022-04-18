@@ -37,6 +37,16 @@ export class LeagueFacade {
         })
     );
 
+    selectedLeagueInfo$: Observable<FootballApiLeaguesResponseInfo> = this.selectedLeague$.pipe(
+        filter((leagueId) => Boolean(leagueId)  === true),
+        switchMap((leagueId) => {
+            return this.leagues$.pipe(
+                map(leagues => leagues.find(league => league.league.id === leagueId)),
+                catchError(() => of(null))
+            );
+        })
+    );
+
     private allLeagues$: Observable<FootballApiLeaguesResponseInfo[]> = this.store.select(leagueSelectors.selectLeagues);
 
     constructor(private store: Store<LeagueState>) {}

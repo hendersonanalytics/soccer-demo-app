@@ -6,7 +6,9 @@ import { IonicModule } from '@ionic/angular';
 import { of } from 'rxjs';
 
 import { AppRoutingModule } from 'src/app/app-routing.module';
+import { LeagueFacade } from 'src/app/modules/leagues/facades/league.facade';
 import { TeamFacade } from 'src/app/modules/teams/facades/team.facade';
+import { TEST_LEAGUES_RESPONSE } from 'src/app/support/data/test-leagues-response';
 import { TEST_PLAYERS_RESPONSE } from 'src/app/support/data/test-players-response';
 import { TEST_TEAMS_RESPONSE } from 'src/app/support/data/test-teams-response';
 import { getSelectorString } from 'src/app/support/utils/get-selector-string';
@@ -19,9 +21,14 @@ describe('PlayerListPageComponent', () => {
   let el: DebugElement;
   let playerFacade: PlayerFacade;
   let teamFacade: TeamFacade;
+  let leagueFacade: LeagueFacade;
 
   const playerFacadeSpy = jasmine.createSpyObj('PlayerFacade', ['appendPlayers']);
   const teamFacadeMock = {};
+  const leagueFacadeMock = {
+    selectedSeason$: of(2021),
+    selectedLeagueInfo$: of(TEST_LEAGUES_RESPONSE.response[0])
+  };
 
   function setDefaultObservableValues() {
     teamFacade.selectedTeamInfo$ = of(TEST_TEAMS_RESPONSE.response[0]);
@@ -40,6 +47,7 @@ describe('PlayerListPageComponent', () => {
       providers: [
         { provide: PlayerFacade, useValue: playerFacadeSpy },
         { provide: TeamFacade, useValue: teamFacadeMock },
+        { provide: LeagueFacade, useValue: leagueFacadeMock },
       ]
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(PlayerListPageComponent);

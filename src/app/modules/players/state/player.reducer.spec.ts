@@ -1,5 +1,6 @@
 import { TEST_PLAYERS_RESPONSE } from 'src/app/support/data/test-players-response';
 import { TEST_PLAYERS_RESPONSE_PAGE_3 } from 'src/app/support/data/test-players-response-page-3';
+import { TEAM_ACTIONS } from '../../teams/enums/team-actions.enum';
 import { PLAYER_ACTIONS } from '../enums/player-actions.enum';
 import { PlayerStateInfo } from '../models/player-state-info.interface';
 import { PLAYER_STATE_TEST_DATA } from '../support/data/player-state-test-data';
@@ -112,5 +113,27 @@ describe('Player reducer', () => {
             };
             expect(state).toEqual(expectedState);
         });
+    });
+
+    it('handles selectTeam action', () => {
+        action = { type: TEAM_ACTIONS.SELECT_TEAM };
+
+        initialState = {
+            ...initialState,
+            nextPageNumber: 3,
+            available: TEST_PLAYERS_RESPONSE.response,
+            morePlayersAreAvailable: true,
+            paging: { current: 2, total: 3 }
+        };
+
+        const state = fromReducer.playerReducer(initialState, action);
+        const expectedState: PlayerStateInfo = {
+            ...initialState,
+            available: [],
+            nextPageNumber: 1,
+            paging: null,
+            morePlayersAreAvailable: null
+        };
+        expect(state).toEqual(expectedState);
     });
 });

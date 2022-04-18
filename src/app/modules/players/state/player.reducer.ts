@@ -1,5 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import cloneDeep from 'lodash.clonedeep';
+import { teamActions } from '../../teams/state/team.actions';
 
 import { PlayerStateInfo } from '../models/player-state-info.interface';
 import { playerActions } from './player.actions';
@@ -40,7 +41,7 @@ const reducer = createReducer(
         clonedState.available = response;
         clonedState.nextPageNumber++;
         clonedState.paging = paging;
-        clonedState.morePlayersAreAvailable = paging.current !== paging.total;
+        clonedState.morePlayersAreAvailable = paging.current < paging.total;
         return clonedState;
     }),
     on(playerActions.appendPlayersSuccess, (state, action) => {
@@ -50,7 +51,15 @@ const reducer = createReducer(
         clonedState.available = clonedState.available.concat(response);
         ++clonedState.nextPageNumber;
         clonedState.paging = paging;
-        clonedState.morePlayersAreAvailable = paging.current !== paging.total;
+        clonedState.morePlayersAreAvailable = paging.current < paging.total;
+        return clonedState;
+    }),
+    on(teamActions.selectTeam, (state) => {
+        const clonedState = cloneDeep(state);
+        clonedState.available = [];
+        clonedState.nextPageNumber = 1;
+        clonedState.paging = null;
+        clonedState.morePlayersAreAvailable = null;
         return clonedState;
     }),
 );

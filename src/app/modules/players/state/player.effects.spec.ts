@@ -13,6 +13,8 @@ import { TEST_PLAYERS_RESPONSE_PAGE_3 } from 'src/app/support/data/test-players-
 import { TEAM_ACTIONS } from '../../teams/enums/team-actions.enum';
 import { teamActions } from '../../teams/state/team.actions';
 import { LeagueFacade } from '../../leagues/facades/league.facade';
+import { TeamFacade } from '../../teams/facades/team.facade';
+import { PlayerFacade } from '../facades/player.facade';
 
 describe('PlayerEffects', () => {
     let effects: PlayerEffects;
@@ -22,11 +24,20 @@ describe('PlayerEffects', () => {
     const season = 2021;
     const teamId = 42;
     const leagueId = 39;
+    const nextPageNumber = 3;
     const playerServiceSpy = jasmine.createSpyObj(playerService, ['fetchPlayers']);
 
     const leagueFacadeMock = {
         selectedSeason$: of(season),
         selectedLeague$: of(leagueId)
+    };
+
+    const teamFacadeMock = {
+        selectedTeam$: of(teamId)
+    };
+
+    const playerFacadeMock = {
+        nextPageNumber$: of(nextPageNumber)
     };
 
     beforeEach(() => {
@@ -36,12 +47,13 @@ describe('PlayerEffects', () => {
                 provideMockStore({ initialState: fromReducer.initialState }),
                 PlayerEffects,
                 {  provide: PlayerService, useValue: playerServiceSpy },
+                {  provide: PlayerFacade, useValue: playerFacadeMock },
                 {  provide: LeagueFacade, useValue: leagueFacadeMock },
+                {  provide: TeamFacade, useValue: teamFacadeMock },
             ]
         });
 
         effects = TestBed.inject(PlayerEffects);
-
         playerServiceSpy.fetchPlayers.and.returnValue(of(TEST_PLAYERS_RESPONSE));
     });
 
@@ -76,28 +88,23 @@ describe('PlayerEffects', () => {
         }));
     });
 
-    xdescribe('appendPlayers$', () => {
-        const page = 3;
-        const queryParams = { season, teamId, page };
-        const ACTION_ARG = {
-            type: PLAYER_ACTIONS.APPEND_PLAYERS,
-            // queryParams
-        };
+    describe('appendPlayers$', () => {
+        const page = nextPageNumber;
+        const queryParams = { season, teamId, page, leagueId };
 
         it('returns the expected action when api call is successful', fakeAsync(() => {
             playerServiceSpy.fetchPlayers.and.returnValue(of(TEST_PLAYERS_RESPONSE_PAGE_3));
             const expectedArg = { response: TEST_PLAYERS_RESPONSE_PAGE_3 };
-            // actions$ = of(playerActions.appendPlayers(ACTION_ARG));
             actions$ = of(playerActions.appendPlayers);
             effects.appendPlayers$.subscribe((result) => {
                 expect(result).toEqual(playerActions.appendPlayersSuccess(expectedArg));
+                expect(playerServiceSpy.fetchPlayers).toHaveBeenCalledOnceWith(queryParams);
             });
             tick();
         }));
 
         it('returns the expected action when api call errors', fakeAsync(() => {
             playerServiceSpy.fetchPlayers.and.returnValue(throwError(new Error()));
-            // actions$ = of(playerActions.appendPlayers(ACTION_ARG));
             actions$ = of(playerActions.appendPlayers);
             effects.appendPlayers$.subscribe((result) => {
                 expect(result).toEqual(playerActions.appendPlayersFail());

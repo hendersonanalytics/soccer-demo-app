@@ -4,49 +4,61 @@
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-title>
-      Football App
+      Team Details
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Team Details</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <ion-card *ngIf="team$ | async as team">
-    <ion-item>
-      <ion-avatar slot="start">
-        <img [src]="team?.team?.logo" alt="logo">
-      </ion-avatar>
-      <ion-label data-test="label-team-name">{{team.team.name}}</ion-label>
-    </ion-item>
-    <ion-card-content>
-      Founded: {{team.team.founded}} | Stadium: {{team.venue.name}}
-    </ion-card-content>
-  </ion-card>
-
-    <ion-list *ngIf="players$ | async as players">
-      <ion-item
-        *ngFor="let player of players"
-        data-test="player-list-item"
+  <ion-grid>
+    <ion-row>
+      <ion-col
+        size="12"
+        size-md="8" offset-md="2"
+        size-lg="6" offset-lg="3"
       >
-        <ion-avatar slot="start">
-          <img [src]="player.player.photo" alt="player image">
-        </ion-avatar>
-        <ion-label>{{player.player.name}}</ion-label>
-      </ion-item>
-    </ion-list>
+        <ion-card *ngIf="team$ | async as team">
+          <ion-item>
+            <ion-avatar slot="start">
+              <img [src]="team?.team?.logo" alt="logo">
+            </ion-avatar>
+            <ion-label data-test="label-team-name">{{team.team.name}}</ion-label>
+          </ion-item>
+          <ion-card-content>
+            Founded: {{team.team.founded}} | Stadium: {{team.venue.name}}
+          </ion-card-content>
+          <ion-card-content *ngIf="league$ | async as league">
+            {{league.league.name}}
+          </ion-card-content>
+          <ion-card-content *ngIf="season$ | async as season">
+            {{season}}
+          </ion-card-content>
+        </ion-card>
+          <ion-list *ngIf="players$ | async as players">
+            <ion-item
+              *ngFor="let player of players"
+              data-test="player-list-item"
+            >
+              <ion-avatar slot="start">
+                <img [src]="player.player.photo" alt="player image">
+              </ion-avatar>
+              <ion-label>{{player.player.name}}</ion-label>
+            </ion-item>
+          </ion-list>
 
-    <ion-button
-      *ngIf="morePlayersAreAvailable$ | async as showMore"
-      expand="block"
-      (click)="onClickShowMore()"
-      data-test="show-more-btn"
-    >
-      Show More
-    </ion-button>
+          <ion-button
+            *ngIf="morePlayersAreAvailable$ | async as showMore"
+            expand="block"
+            (click)="onClickShowMore()"
+            data-test="show-more-btn"
+          >
+            Show More
+          </ion-button>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
 
 </ion-content>
