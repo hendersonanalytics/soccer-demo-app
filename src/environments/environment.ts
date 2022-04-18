@@ -3,7 +3,19 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiHeaderInfo: {
+    rapidApi: {
+      host: {
+        key: 'x-rapidapi-host',
+        value: 'v3.football.api-sports.io'
+      },
+      key: {
+        key: 'x-apisports-key',
+        value: '25b733aa9cb29a99132e800475bd1f80'
+      }
+    }
+  }
 };
 
 /*
