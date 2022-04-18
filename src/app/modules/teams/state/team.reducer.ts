@@ -40,7 +40,7 @@ const reducer = createReducer(
     }),
     on(teamActions.selectTeam, (state, action) => {
         const clonedState = cloneDeep(state);
-        clonedState.selected = parseInt(action.teamId, 10);
+        clonedState.selected = action.teamId;
         return clonedState;
     }),
 );

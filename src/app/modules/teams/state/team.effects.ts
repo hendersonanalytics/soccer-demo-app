@@ -2,7 +2,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { catchError, concatMap, map } from 'rxjs/operators';
+import { catchError, concatMap, map, tap, withLatestFrom } from 'rxjs/operators';
+import { LeagueFacade } from '../../leagues/facades/league.facade';
+import { leagueActions } from '../../leagues/state/league.actions';
 
 import { TeamService } from '../services/team.service';
 import { teamActions } from './team.actions';
@@ -22,8 +24,21 @@ export class TeamEffects {
         );
     });
 
+    selectLeague$ = createEffect(() => {
+        return this.action$.pipe(
+            ofType(leagueActions.selectLeague),
+            withLatestFrom(this.leagueFacade.selectedSeason$),
+            map(([action, season]) => {
+                const { league: leagueId } = action;
+                const queryParams = { leagueId, season };
+                return teamActions.fetchTeams({queryParams});
+            })
+        );
+    });
+
     constructor(
         private teamService: TeamService,
+        private leagueFacade: LeagueFacade,
         private action$: Actions
     ) {}
 }

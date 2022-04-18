@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { TeamListPageComponent } from './modules/teams/components/team-list-page/team-list-page.component';
 
 const routes: Routes = [
   {
@@ -9,6 +10,11 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'teams',
+    component: TeamListPageComponent,
     pathMatch: 'full'
   },
 ];

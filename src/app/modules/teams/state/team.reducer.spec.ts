@@ -52,7 +52,7 @@ describe('Team reducer', () => {
     });
 
     it('handles selectTeam action properly', () => {
-        const teamId = '39';
+        const teamId = 39;
         const available = TEST_TEAMS_RESPONSE.response;
         action = {
             type: TEAM_ACTIONS.SELECT_TEAM,
@@ -64,7 +64,7 @@ describe('Team reducer', () => {
         const state = fromReducer.teamReducer(initialState, action);
         const expectedState: TeamStateInfo = {
             ...initialState,
-            selected: 39
+            selected: teamId
 
         };
         expect(state).toEqual(expectedState);

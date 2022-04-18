@@ -17,7 +17,7 @@ const fetchTeamsSuccess = createAction(
 
 const selectTeam = createAction(
     TEAM_ACTIONS.SELECT_TEAM,
-    props<{ teamId: string }>()
+    props<{ teamId: number }>()
 );
 
 export const teamActions = {

@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Football App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Teams</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+    <ion-list *ngIf="teams$ | async as teams">
+      <ion-item *ngFor="let team of teams" (click)="onSelectTeam(team.team.id)">
+        <ion-avatar slot="start">
+          <img [src]="team.team.logo" alt="logo">
+        </ion-avatar>
+        <ion-label>{{team.team.name}}</ion-label>
+      </ion-item>
+    </ion-list>
+
+</ion-content>

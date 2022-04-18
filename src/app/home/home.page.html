@@ -33,7 +33,7 @@
     </ion-item>
 
     <ion-list *ngIf="leagues$ | async as leagues">
-      <ion-item *ngFor="let league of leagues" (click)="onSelectLeague(league.league.id)">
+      <ion-item *ngFor="let league of leagues" routerLink="/teams" (click)="onSelectLeague(league.league.id)">
         <ion-avatar slot="start">
           <img [src]="league.league.logo" alt="logo">
         </ion-avatar>
@@ -43,6 +43,4 @@
     </ion-list>
 
   </ion-list>
-
-
 </ion-content>
