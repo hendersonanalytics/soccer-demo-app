@@ -16,16 +16,18 @@ const fetchPlayersSuccess = createAction(
     props<{ response: FootballApiPlayersResponse }>()
 );
 
-const appendPlayers = createAction(
-    PLAYER_ACTIONS.APPEND_PLAYERS,
-    // props<{ queryParams?: PlayerQueryParams }>()
-);
+const appendPlayers = createAction(PLAYER_ACTIONS.APPEND_PLAYERS);
 
 const appendPlayersFail = createAction(PLAYER_ACTIONS.APPEND_PLAYERS_FAIL);
 
 const appendPlayersSuccess = createAction(
     PLAYER_ACTIONS.APPEND_PLAYERS_SUCCESS,
     props<{ response: FootballApiPlayersResponse }>()
+);
+
+const resetPlayers = createAction(
+    PLAYER_ACTIONS.RESET_PLAYERS,
+    props<{ queryParams: PlayerQueryParams }>()
 );
 
 export const playerActions = {
@@ -35,5 +37,7 @@ export const playerActions = {
 
     appendPlayers,
     appendPlayersFail,
-    appendPlayersSuccess
+    appendPlayersSuccess,
+
+    resetPlayers
 };

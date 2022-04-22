@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { catchError, concatMap, map, withLatestFrom } from 'rxjs/operators';
+import { catchError, concatMap, distinctUntilChanged, filter, map, withLatestFrom } from 'rxjs/operators';
 
 import { LeagueFacade } from '../../leagues/facades/league.facade';
 import { TeamFacade } from '../../teams/facades/team.facade';
@@ -16,7 +16,10 @@ import { playerActions } from './player.actions';
 export class PlayerEffects {
     fetchPlayers$ = createEffect(() => {
         return this.action$.pipe(
-            ofType(playerActions.fetchPlayers),
+            ofType(
+                playerActions.fetchPlayers,
+                playerActions.resetPlayers,
+            ),
             concatMap((action) => {
                 const { queryParams } = action;
                 return this.playerService.fetchPlayers(queryParams).pipe(
@@ -50,17 +53,27 @@ export class PlayerEffects {
         );
     });
 
+    // need to keep players in memory, no need to make another api call...
     selectTeam$ = createEffect(() => {
+        let prevLeagueId: number;
+        let prevTeamId: number;
+        let prevSeason: number;
         return this.action$.pipe(
             ofType(teamActions.selectTeam),
             withLatestFrom(
                 this.leagueFacade.selectedSeason$,
                 this.leagueFacade.selectedLeague$
             ),
+            filter(([action, season, leagueId]) => {
+                return season !== prevSeason || leagueId !== prevLeagueId || action.teamId !== prevTeamId;
+            }),
             map(([action, season, leagueId]) => {
                 const { teamId } = action;
                 const queryParams = { teamId, season, leagueId };
-                return playerActions.fetchPlayers({queryParams});
+                prevSeason = season;
+                prevLeagueId = leagueId;
+                prevTeamId = teamId;
+                return playerActions.resetPlayers({queryParams});
             })
         );
     });

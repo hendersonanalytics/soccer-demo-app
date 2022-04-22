@@ -10,7 +10,7 @@ import { LeagueFacade } from 'src/app/modules/leagues/facades/league.facade';
 import { TEST_LEAGUES_RESPONSE } from 'src/app/support/data/test-leagues-response';
 import { TEST_TEAMS_RESPONSE } from 'src/app/support/data/test-teams-response';
 import { getSelectorString } from 'src/app/support/utils/get-selector-string';
-import { TeamFacade } from '../../facades/team.facade';
+import { TeamFacade } from '../../modules/teams/facades/team.facade';
 import { TeamListPageComponent } from './team-list-page.component';
 
 describe('TeamListPageComponent', () => {
@@ -23,7 +23,8 @@ describe('TeamListPageComponent', () => {
 
   const leagueFacadeMock = {
     selectedSeason$: of(2021),
-    selectedLeagueInfo$: of(TEST_LEAGUES_RESPONSE.response[0])
+    selectedLeagueInfo$: of(TEST_LEAGUES_RESPONSE.response[0]),
+    selectedLeague$: of(39),
   };
 
   function setDefaultObservableValues() {
@@ -43,6 +44,7 @@ describe('TeamListPageComponent', () => {
         { provide: LeagueFacade, useValue: leagueFacadeMock }
       ]
     }).compileComponents().then(() => {
+
       fixture = TestBed.createComponent(TeamListPageComponent);
       teamFacade = TestBed.inject(TeamFacade);
       component = fixture.componentInstance;

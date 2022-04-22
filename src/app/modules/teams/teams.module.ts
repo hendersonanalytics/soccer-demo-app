@@ -6,7 +6,6 @@ import { EffectsModule } from '@ngrx/effects';
 import * as fromReducer from './state/team.reducer';
 import { TeamEffects } from './state/team.effects';
 import { IonicModule } from '@ionic/angular';
-import { TeamListPageModule } from './components/team-list-page/team-list.module';
 
 @NgModule({
   imports: [
@@ -14,7 +13,6 @@ import { TeamListPageModule } from './components/team-list-page/team-list.module
     IonicModule,
     StoreModule.forFeature(fromReducer.featureKey, fromReducer.teamReducer),
     EffectsModule.forFeature([TeamEffects]),
-    TeamListPageModule
   ]
 })
 export class TeamsModule { }

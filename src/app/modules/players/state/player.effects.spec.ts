@@ -62,30 +62,60 @@ describe('PlayerEffects', () => {
     });
 
     describe('fetchPlayers$', () => {
+        const queryParams = { season, teamId, leagueId };
+        const expectedArg = { response: TEST_PLAYERS_RESPONSE };
 
-        const queryParams = { season, teamId };
-        const ACTION_ARG = {
-            type: PLAYER_ACTIONS.FETCH_PLAYERS,
-            queryParams
-        };
+        describe('playerActions.fetchPlayers action', () => {
+            const ACTION_ARG = {
+                type: PLAYER_ACTIONS.FETCH_PLAYERS,
+                queryParams
+            };
 
-        it('returns the expected action when api call is successful', fakeAsync(() => {
-            const expectedArg = { response: TEST_PLAYERS_RESPONSE };
-            actions$ = of(playerActions.fetchPlayers(ACTION_ARG));
-            effects.fetchPlayers$.subscribe((result) => {
-                expect(result).toEqual(playerActions.fetchPlayersSuccess(expectedArg));
-            });
-            tick();
-        }));
+            it('returns the expected action when api call is successful', fakeAsync(() => {
+                actions$ = of(playerActions.fetchPlayers(ACTION_ARG));
+                effects.fetchPlayers$.subscribe((result) => {
+                    expect(result).toEqual(playerActions.fetchPlayersSuccess(expectedArg));
+                    expect(playerServiceSpy.fetchPlayers).toHaveBeenCalledOnceWith(queryParams);
+                });
+                tick();
+            }));
 
-        it('returns the expected action when api call errors', fakeAsync(() => {
-            playerServiceSpy.fetchPlayers.and.returnValue(throwError(new Error()));
-            actions$ = of(playerActions.fetchPlayers(ACTION_ARG));
-            effects.fetchPlayers$.subscribe((result) => {
-                expect(result).toEqual(playerActions.fetchPlayersFail());
-            });
-            tick();
-        }));
+            it('returns the expected action when api call errors', fakeAsync(() => {
+                playerServiceSpy.fetchPlayers.and.returnValue(throwError(new Error()));
+                actions$ = of(playerActions.fetchPlayers(ACTION_ARG));
+                effects.fetchPlayers$.subscribe((result) => {
+                    expect(result).toEqual(playerActions.fetchPlayersFail());
+                    expect(playerServiceSpy.fetchPlayers).toHaveBeenCalledOnceWith(queryParams);
+                });
+                tick();
+            }));
+        });
+
+        describe('playerActions.resetPlayers action', () => {
+            const ACTION_ARG = {
+                type: PLAYER_ACTIONS.RESET_PLAYERS,
+                queryParams
+            };
+
+            it('returns the expected action when api call is successful', fakeAsync(() => {
+                actions$ = of(playerActions.fetchPlayers(ACTION_ARG));
+                effects.fetchPlayers$.subscribe((result) => {
+                    expect(result).toEqual(playerActions.fetchPlayersSuccess(expectedArg));
+                    expect(playerServiceSpy.fetchPlayers).toHaveBeenCalledOnceWith(queryParams);
+                });
+                tick();
+            }));
+
+            it('returns the expected action when api call errors', fakeAsync(() => {
+                playerServiceSpy.fetchPlayers.and.returnValue(throwError(new Error()));
+                actions$ = of(playerActions.resetPlayers(ACTION_ARG));
+                effects.fetchPlayers$.subscribe((result) => {
+                    expect(result).toEqual(playerActions.fetchPlayersFail());
+                    expect(playerServiceSpy.fetchPlayers).toHaveBeenCalledOnceWith(queryParams);
+                });
+                tick();
+            }));
+        });
     });
 
     describe('appendPlayers$', () => {
@@ -123,7 +153,7 @@ describe('PlayerEffects', () => {
         it('returns the expected action', fakeAsync(() => {
             actions$ = of(teamActions.selectTeam(ACTION_ARG));
             effects.selectTeam$.subscribe((result) => {
-                expect(result).toEqual(playerActions.fetchPlayers({ queryParams }));
+                expect(result).toEqual(playerActions.resetPlayers({ queryParams }));
             });
             tick();
         }));
