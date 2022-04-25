@@ -115,8 +115,8 @@ describe('Player reducer', () => {
         });
     });
 
-    it('handles selectTeam action', () => {
-        action = { type: TEAM_ACTIONS.SELECT_TEAM };
+    it('handles resetPlayers action', () => {
+        action = { type: PLAYER_ACTIONS.RESET_PLAYERS };
 
         initialState = {
             ...initialState,

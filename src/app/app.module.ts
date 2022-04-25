@@ -15,9 +15,18 @@ import { TeamsModule } from './modules/teams/teams.module';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { CoreModule } from './modules/core/core.module';
+import { LeagueListPageComponent } from './components/league-list-page/league-list.page';
+import { PlayerListPageComponent } from './components/player-list-page/player-list-page.component';
+import { TeamListPageComponent } from './components/team-list-page/team-list-page.component';
+import { SharedComponentsModule } from './components/shared/shared-components.module';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    LeagueListPageComponent,
+    PlayerListPageComponent,
+    TeamListPageComponent
+  ],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -30,6 +39,7 @@ import { CoreModule } from './modules/core/core.module';
     PlayersModule,
     TeamsModule,
     CoreModule,
+    SharedComponentsModule,
     HttpClientModule
   ],
   providers: [

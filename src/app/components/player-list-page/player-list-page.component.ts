@@ -4,8 +4,8 @@ import { LeagueFacade } from 'src/app/modules/leagues/facades/league.facade';
 import { FootballApiLeaguesResponseInfo } from 'src/app/modules/leagues/models/football-api-leagues-response-info.interface';
 import { TeamFacade } from 'src/app/modules/teams/facades/team.facade';
 import { FootballApiTeamsResponseInfo } from 'src/app/modules/teams/models/football-api-teams-response-info.interface';
-import { PlayerFacade } from '../../facades/player.facade';
-import { FootballApiPlayersResponseInfo } from '../../models/football-api-players-response-info.interface';
+import { PlayerFacade } from '../../modules/players/facades/player.facade';
+import { FootballApiPlayersResponseInfo } from '../../modules/players/models/football-api-players-response-info.interface';
 
 @Component({
   selector: 'app-player-list-page',
@@ -36,5 +36,4 @@ export class PlayerListPageComponent implements OnInit {
   onClickShowMore() {
     this.playerFacade.appendPlayers();
   }
-
 }

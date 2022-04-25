@@ -12,7 +12,7 @@ import { TEST_LEAGUES_RESPONSE } from 'src/app/support/data/test-leagues-respons
 import { TEST_PLAYERS_RESPONSE } from 'src/app/support/data/test-players-response';
 import { TEST_TEAMS_RESPONSE } from 'src/app/support/data/test-teams-response';
 import { getSelectorString } from 'src/app/support/utils/get-selector-string';
-import { PlayerFacade } from '../../facades/player.facade';
+import { PlayerFacade } from '../../modules/players/facades/player.facade';
 import { PlayerListPageComponent } from './player-list-page.component';
 
 describe('PlayerListPageComponent', () => {
@@ -24,14 +24,19 @@ describe('PlayerListPageComponent', () => {
   let leagueFacade: LeagueFacade;
 
   const playerFacadeSpy = jasmine.createSpyObj('PlayerFacade', ['appendPlayers']);
-  const teamFacadeMock = {};
+  const teamFacadeMock = {
+    selectedTeam$: of(42)
+  };
+
   const leagueFacadeMock = {
     selectedSeason$: of(2021),
-    selectedLeagueInfo$: of(TEST_LEAGUES_RESPONSE.response[0])
+    selectedLeagueInfo$: of(TEST_LEAGUES_RESPONSE.response[0]),
+    selectedLeague$: of(39)
   };
 
   function setDefaultObservableValues() {
     teamFacade.selectedTeamInfo$ = of(TEST_TEAMS_RESPONSE.response[0]);
+    teamFacade.selectedTeam$ = of(42);
     playerFacade.players$ = of(TEST_PLAYERS_RESPONSE.response);
     playerFacade.morePlayersAreAvailable$ = of(true);
   }

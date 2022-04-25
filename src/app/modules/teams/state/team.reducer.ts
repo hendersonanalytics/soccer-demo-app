@@ -20,7 +20,7 @@ export const initialState: TeamStateInfo = {
 
 const reducer = createReducer(
     initialState,
-    on(teamActions.fetchTeams, (state) => {
+    on(teamActions.fetchTeams, (state, action) => {
         const clonedState = cloneDeep(state);
         clonedState.isLoading = true;
         clonedState.error = false;

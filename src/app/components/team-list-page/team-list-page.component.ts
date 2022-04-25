@@ -3,8 +3,8 @@ import { Observable } from 'rxjs';
 import { LeagueFacade } from 'src/app/modules/leagues/facades/league.facade';
 import { FootballApiLeaguesResponseInfo } from 'src/app/modules/leagues/models/football-api-leagues-response-info.interface';
 
-import { TeamFacade } from '../../facades/team.facade';
-import { FootballApiTeamsResponseInfo } from '../../models/football-api-teams-response-info.interface';
+import { TeamFacade } from '../../modules/teams/facades/team.facade';
+import { FootballApiTeamsResponseInfo } from '../../modules/teams/models/football-api-teams-response-info.interface';
 
 @Component({
   selector: 'app-team-list-page',

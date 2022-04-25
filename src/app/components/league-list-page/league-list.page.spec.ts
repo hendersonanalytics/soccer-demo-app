@@ -5,16 +5,16 @@ import { BrowserModule, By } from '@angular/platform-browser';
 import { IonicModule } from '@ionic/angular';
 import { of } from 'rxjs';
 
-import { AppRoutingModule } from '../app-routing.module';
-import { LeagueFacade } from '../modules/leagues/facades/league.facade';
-import { TEST_LEAGUES_RESPONSE } from '../support/data/test-leagues-response';
-import { TEST_SEASONS_RESPONSE } from '../support/data/test-seasons-response';
-import { getSelectorString } from '../support/utils/get-selector-string';
-import { HomePage } from './home.page';
+import { AppRoutingModule } from '../../app-routing.module';
+import { LeagueFacade } from '../../modules/leagues/facades/league.facade';
+import { TEST_LEAGUES_RESPONSE } from '../../support/data/test-leagues-response';
+import { TEST_SEASONS_RESPONSE } from '../../support/data/test-seasons-response';
+import { getSelectorString } from '../../support/utils/get-selector-string';
+import { LeagueListPageComponent } from './league-list.page';
 
-describe('HomePage', () => {
-  let component: HomePage;
-  let fixture: ComponentFixture<HomePage>;
+describe('LeagueListPageComponent', () => {
+  let component: LeagueListPageComponent;
+  let fixture: ComponentFixture<LeagueListPageComponent>;
   let el: DebugElement;
   let leagueFacade: LeagueFacade;
 
@@ -37,7 +37,7 @@ describe('HomePage', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomePage ],
+      declarations: [ LeagueListPageComponent ],
       imports: [
         IonicModule.forRoot(),
         BrowserModule,
@@ -47,7 +47,7 @@ describe('HomePage', () => {
         { provide: LeagueFacade, useValue: leagueFacadeSpy }
       ]
     }).compileComponents().then(() => {
-      fixture = TestBed.createComponent(HomePage);
+      fixture = TestBed.createComponent(LeagueListPageComponent);
       leagueFacade = TestBed.inject(LeagueFacade);
       component = fixture.componentInstance;
       el = fixture.debugElement;

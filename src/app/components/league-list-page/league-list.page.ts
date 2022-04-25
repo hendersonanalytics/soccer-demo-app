@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { LeagueFacade } from '../modules/leagues/facades/league.facade';
-import { FootballApiLeaguesResponseInfo } from '../modules/leagues/models/football-api-leagues-response-info.interface';
+import { LeagueFacade } from '../../modules/leagues/facades/league.facade';
+import { FootballApiLeaguesResponseInfo } from '../../modules/leagues/models/football-api-leagues-response-info.interface';
 
 @Component({
   selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  templateUrl: 'league-list.page.html',
+  styleUrls: ['league-list.page.scss'],
 })
-export class HomePage implements OnInit {
+export class LeagueListPageComponent implements OnInit {
   seasons$: Observable<number[]>;
   countries$: Observable<string[]>;
   leagues$: Observable<FootballApiLeaguesResponseInfo[]>;
