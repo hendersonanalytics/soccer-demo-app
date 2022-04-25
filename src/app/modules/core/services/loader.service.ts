@@ -10,8 +10,8 @@ export class LoaderService {
   constructor(private loadingCtrl: LoadingController) { };
 
   public async showLoader(loadingOptions?: LoadingOptions): Promise<boolean> {
-    // never returning a rejected promise here since I'll be using it an interceptor and I
-    // don't want it to screw anything up
+    // never returning a rejected promise here since I'm using it in an interceptor and I
+    // don't want it to screw anything up by throwing an error.
     try {
       if (this.loadingElement) {
         this.loadingElement = null;
@@ -24,7 +24,6 @@ export class LoaderService {
       await this.loadingElement.present();
       return Promise.resolve(true);
     } catch (error) {
-      console.log('error', error);
       return Promise.resolve(false);
     }
   }
@@ -36,7 +35,6 @@ export class LoaderService {
       }
       return Promise.resolve(true);
     } catch (error) {
-      console.log('error', error);
       return Promise.resolve(false);
     }
   };

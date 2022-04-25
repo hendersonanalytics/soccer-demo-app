@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { FootballApiInterceptor } from './interceptors/football-api.interceptor';
-import { LeagueSeasonGuard } from './guards/league-season.guard';
 import { LoadingIndicatorInterceptor } from './interceptors/loading-indicator.interceptor';
 
 @NgModule({
@@ -20,8 +19,7 @@ import { LoadingIndicatorInterceptor } from './interceptors/loading-indicator.in
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingIndicatorInterceptor,
       multi: true,
-    },
-    LeagueSeasonGuard
+    }
   ]
 })
 export class CoreModule { }
