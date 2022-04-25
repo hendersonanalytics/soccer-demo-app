@@ -4,6 +4,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { FootballApiInterceptor } from './interceptors/football-api.interceptor';
 import { LeagueSeasonGuard } from './guards/league-season.guard';
+import { LoadingIndicatorInterceptor } from './interceptors/loading-indicator.interceptor';
 
 @NgModule({
   imports: [
@@ -13,6 +14,11 @@ import { LeagueSeasonGuard } from './guards/league-season.guard';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: FootballApiInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingIndicatorInterceptor,
       multi: true,
     },
     LeagueSeasonGuard

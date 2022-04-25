@@ -18,6 +18,7 @@ import { CoreModule } from './modules/core/core.module';
 import { LeagueListPageComponent } from './components/league-list-page/league-list.page';
 import { PlayerListPageComponent } from './components/player-list-page/player-list-page.component';
 import { TeamListPageComponent } from './components/team-list-page/team-list-page.component';
+import { SharedComponentsModule } from './components/shared/shared-components.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { TeamListPageComponent } from './components/team-list-page/team-list-pag
     PlayersModule,
     TeamsModule,
     CoreModule,
+    SharedComponentsModule,
     HttpClientModule
   ],
   providers: [

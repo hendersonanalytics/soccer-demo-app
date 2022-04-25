@@ -35,17 +35,19 @@
           </ion-card-content>
         </ion-card>
           <ion-list *ngIf="players$ | async as players">
-            <ion-item
-              *ngFor="let player of players"
-              data-test="player-list-item"
-            >
+            <app-no-results-found *ngIf="players.length === 0"></app-no-results-found>
+            <ng-container *ngIf="players.length > 0">
+              <ion-item
+                *ngFor="let player of players"
+                data-test="player-list-item"
+              >
               <ion-avatar slot="start">
                 <img [src]="player.player.photo" alt="player image">
               </ion-avatar>
               <ion-label>{{player.player.name}}</ion-label>
             </ion-item>
+            </ng-container>
           </ion-list>
-
           <ion-button
             *ngIf="morePlayersAreAvailable$ | async as showMore"
             expand="block"

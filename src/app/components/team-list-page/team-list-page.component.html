@@ -25,17 +25,20 @@
         </ion-list-header>
 
         <ion-list *ngIf="teams$ | async as teams">
-          <ion-item
-            *ngFor="let team of teams"
-            (click)="onSelectTeam(team.team.id)"
-            routerLink="/team-details"
-            data-test="team-list-item"
-          >
-            <ion-avatar slot="start">
-              <img [src]="team.team.logo" alt="logo">
-            </ion-avatar>
-            <ion-label>{{team.team.name}}</ion-label>
+          <app-no-results-found *ngIf="teams.length === 0"></app-no-results-found>
+          <ng-container *ngIf="teams.length > 0">
+            <ion-item
+              *ngFor="let team of teams"
+              (click)="onSelectTeam(team.team.id)"
+              routerLink="/team-details"
+              data-test="team-list-item"
+            >
+              <ion-avatar slot="start">
+                <img [src]="team.team.logo" alt="logo">
+              </ion-avatar>
+              <ion-label>{{team.team.name}}</ion-label>
           </ion-item>
+          </ng-container>
         </ion-list>
       </ion-col>
     </ion-row>

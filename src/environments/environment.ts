@@ -12,7 +12,7 @@ export const environment = {
       },
       key: {
         key: 'x-apisports-key',
-        value: 'API_KEY_VALUE'
+        value: 'API_KEY'
       }
     }
   }

@@ -38,14 +38,21 @@
               </ng-container>
             </ion-item>
           </ng-container>
-
           <ion-list *ngIf="leagues$ | async as leagues">
-            <ion-item data-test="league-option-element" *ngFor="let league of leagues" routerLink="/teams" (click)="onSelectLeague(league.league.id)">
-              <ion-avatar slot="start">
-                <img [src]="league.league.logo" alt="logo">
-              </ion-avatar>
-              <ion-label>{{league.league.name}}</ion-label>
+            <app-no-results-found *ngIf="leagues.length === 0"></app-no-results-found>
+            <ng-container *ngIf="leagues.length > 0">
+              <ion-item
+                data-test="league-option-element"
+                *ngFor="let league of leagues"
+                routerLink="/teams"
+                (click)="onSelectLeague(league.league.id)"
+              >
+                <ion-avatar slot="start">
+                  <img [src]="league.league.logo" alt="logo">
+                </ion-avatar>
+                <ion-label>{{league.league.name}}</ion-label>
             </ion-item>
+            </ng-container>
           </ion-list>
         </ion-list>
       </ion-col>
