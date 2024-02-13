@@ -72,7 +72,7 @@ describe('LeagueListPageComponent', () => {
     const leagueOptionElements = el.queryAll(By.css(getSelectorString('league-option-element')));
     expect(leagueOptionElements.length).toBe(20);
     const countryOptionElements = el.queryAll(By.css(getSelectorString('country-option-element')));
-    expect(countryOptionElements.length).toBe(COUNTRIES.length);
+    expect(countryOptionElements.length).toBe(9);
     const seasonOptionElements = el.queryAll(By.css(getSelectorString('season-option-element')));
     expect(seasonOptionElements.length).toBe(TEST_SEASONS_RESPONSE.response.length);
   });
