@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { catchError, concatMap, distinctUntilChanged, filter, map, withLatestFrom } from 'rxjs/operators';
+import { catchError, concatMap, filter, map, withLatestFrom } from 'rxjs/operators';
 
 import { LeagueFacade } from '../../leagues/facades/league.facade';
 import { TeamFacade } from '../../teams/facades/team.facade';

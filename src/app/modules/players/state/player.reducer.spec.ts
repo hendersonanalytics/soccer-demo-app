@@ -136,4 +136,23 @@ describe('Player reducer', () => {
         };
         expect(state).toEqual(expectedState);
     });
+
+    it('handles selectPlayer action', () => {
+        action = { type: PLAYER_ACTIONS.SELECT_PLAYER, playerId: 2784 };
+
+        initialState = {
+            ...initialState,
+            nextPageNumber: 3,
+            available: TEST_PLAYERS_RESPONSE.response,
+            morePlayersAreAvailable: true,
+            paging: { current: 2, total: 3 }
+        };
+
+        const state = fromReducer.playerReducer(initialState, action);
+        const expectedState: PlayerStateInfo = {
+            ...initialState,
+            selected: 2784
+        };
+        expect(state).toEqual(expectedState);
+    });
 });

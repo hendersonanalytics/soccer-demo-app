@@ -19,13 +19,15 @@ import { LeagueListPageComponent } from './components/league-list-page/league-li
 import { PlayerListPageComponent } from './components/player-list-page/player-list-page.component';
 import { TeamListPageComponent } from './components/team-list-page/team-list-page.component';
 import { SharedComponentsModule } from './components/shared/shared-components.module';
+import { PlayerDetailPageComponent } from './components/player-detail-page/player-detail-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LeagueListPageComponent,
     PlayerListPageComponent,
-    TeamListPageComponent
+    TeamListPageComponent,
+    PlayerDetailPageComponent
   ],
   entryComponents: [],
   imports: [

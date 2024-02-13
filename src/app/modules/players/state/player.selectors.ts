@@ -12,11 +12,13 @@ const selectIsLoading = createSelector(selectPlayer, (player: PlayerStateInfo) =
 const selectMorePlayersAreAvailable = createSelector(selectPlayer, (player: PlayerStateInfo) => player?.morePlayersAreAvailable);
 const selectError = createSelector(selectPlayer, (player: PlayerStateInfo) => player?.error);
 const selectNextPageNumber = createSelector(selectPlayer, (player: PlayerStateInfo) => player?.nextPageNumber);
+const selectSelectedPlayer = createSelector(selectPlayer, (player: PlayerStateInfo) => player?.selected);
 
 export const playerSelectors = {
     selectPlayers,
     selectIsLoading,
     selectMorePlayersAreAvailable,
     selectError,
-    selectNextPageNumber
+    selectNextPageNumber,
+    selectSelectedPlayer
 };

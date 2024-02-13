@@ -30,6 +30,11 @@ const resetPlayers = createAction(
     props<{ queryParams: PlayerQueryParams }>()
 );
 
+const selectPlayer = createAction(
+    PLAYER_ACTIONS.SELECT_PLAYER,
+    props<{ playerId: number }>()
+);
+
 export const playerActions = {
     fetchPlayers,
     fetchPlayersFail,
@@ -39,5 +44,6 @@ export const playerActions = {
     appendPlayersFail,
     appendPlayersSuccess,
 
-    resetPlayers
+    resetPlayers,
+    selectPlayer
 };

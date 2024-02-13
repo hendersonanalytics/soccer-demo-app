@@ -14,6 +14,7 @@ export const initialState: PlayerStateInfo = {
     available: [],
     nextPageNumber: 1,
     morePlayersAreAvailable: null,
+    selected: null,
     error: false,
     isLoading: false,
     paging: null
@@ -59,6 +60,11 @@ const reducer = createReducer(
         clonedState.nextPageNumber = 1;
         clonedState.paging = null;
         clonedState.morePlayersAreAvailable = null;
+        return clonedState;
+    }),
+    on(playerActions.selectPlayer, (state, action) => {
+        const clonedState = cloneDeep(state);
+        clonedState.selected = action.playerId;
         return clonedState;
     }),
 );

@@ -1,0 +1,61 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Player Details
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col
+        size="12"
+        size-md="8" offset-md="2"
+        size-lg="6" offset-lg="3"
+      >
+        <ion-card *ngIf="selectedPlayerAttributes$ | async as attributes">
+          <ion-item>
+            <ion-avatar slot="start">
+              <img [src]="attributes?.photo" alt="player image">
+            </ion-avatar>
+            <ion-label data-test="label-team-name">{{attributes.name}}</ion-label>
+          </ion-item>
+          <ion-card-content>
+            Age: {{attributes.age}}
+          </ion-card-content>
+          <ion-card-content *ngIf="league$ | async as league">
+            {{league.league.name}}
+          </ion-card-content>
+          <ion-card-content *ngIf="season$ | async as season">
+            {{season}}
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card *ngIf="selectedPlayerStats$ | async as stats">
+          <ion-card-content *ngIf="stats?.games?.appearences">
+            Games: {{stats.games.appearences}}
+          </ion-card-content>
+          <ion-card-content *ngIf="stats?.goals?.total">
+            Goals: {{stats.goals.total}}
+          </ion-card-content>
+          <ion-card-content *ngIf="stats?.goals?.assists">
+            Assists: {{stats.goals.assists}}
+          </ion-card-content>
+          <ion-card-content *ngIf="stats?.passes?.total">
+            Passes: {{stats.passes.total}}
+          </ion-card-content>
+          <ion-card-content *ngIf="stats?.tackles?.total">
+            Tackles: {{stats.tackles.total}}
+          </ion-card-content>
+          <ion-card-content *ngIf="stats?.cards?.yellow">
+            Yellow Cards: {{stats.cards.yellow}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

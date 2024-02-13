@@ -40,6 +40,8 @@
               <ion-item
                 *ngFor="let player of players"
                 data-test="player-list-item"
+                (click)="onSelectPlayer(player.player.id)"
+                routerLink="/player-details"
               >
               <ion-avatar slot="start">
                 <img [src]="player.player.photo" alt="player image">
@@ -60,7 +62,4 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-
-
-
 </ion-content>

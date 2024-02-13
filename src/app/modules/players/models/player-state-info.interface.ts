@@ -4,6 +4,7 @@ export interface PlayerStateInfo {
     available: FootballApiPlayersResponseInfo[];
     nextPageNumber: number;
     morePlayersAreAvailable: boolean;
+    selected: number;
     paging: {
         current: number;
         total: number;

@@ -23,7 +23,7 @@ describe('PlayerListPageComponent', () => {
   let teamFacade: TeamFacade;
   let leagueFacade: LeagueFacade;
 
-  const playerFacadeSpy = jasmine.createSpyObj('PlayerFacade', ['appendPlayers']);
+  const playerFacadeSpy = jasmine.createSpyObj('PlayerFacade', ['appendPlayers', 'selectPlayer']);
   const teamFacadeMock = {
     selectedTeam$: of(42)
   };
@@ -84,5 +84,19 @@ describe('PlayerListPageComponent', () => {
     const showMoreElement = el.query(By.css(getSelectorString('show-more-btn')));
     showMoreElement.nativeElement.click();
     expect(playerFacadeSpy.appendPlayers).toHaveBeenCalledOnceWith();
+  });
+
+  it('clicking on a player should call the expected method with the expected arguments', () => {
+    spyOn(component, 'onSelectPlayer');
+    const playerListItems = el.queryAll(By.css(getSelectorString('player-list-item')));
+    playerListItems[0].nativeElement.click();
+    expect(component.onSelectPlayer).toHaveBeenCalledOnceWith(2784);
+  });
+
+  describe('onSelectPlayer', () => {
+    it('should call the expected method with the expected arguments', () => {
+      component.onSelectPlayer(1);
+      expect(playerFacade.selectPlayer).toHaveBeenCalledOnceWith(1);
+    });
   });
 });

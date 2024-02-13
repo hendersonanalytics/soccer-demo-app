@@ -5,6 +5,9 @@ import { PlayerListPageComponent } from './components/player-list-page/player-li
 import { TeamListPageComponent } from './components/team-list-page/team-list-page.component';
 import { LeagueSeasonTeamGuard } from './modules/core/guards/league-season-team.guard';
 import { LeagueSeasonGuard } from './modules/core/guards/league-season.guard';
+import { PlayerDetailPageComponent } from './components/player-detail-page/player-detail-page.component';
+import { PlayerGuard } from './modules/core/guards/player.guard';
+import { TeamGuard } from './modules/core/guards/team.guard';
 
 const routes: Routes = [
   {
@@ -19,7 +22,12 @@ const routes: Routes = [
   {
     path: 'team-details',
     component: PlayerListPageComponent,
-    canActivate: [LeagueSeasonTeamGuard]
+    canActivate: [LeagueSeasonGuard, TeamGuard]
+  },
+  {
+    path: 'player-details',
+    component: PlayerDetailPageComponent,
+    canActivate: [LeagueSeasonGuard, TeamGuard, PlayerGuard]
   },
   {
     path: '',
