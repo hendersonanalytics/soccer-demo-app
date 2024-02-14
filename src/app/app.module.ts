@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
@@ -20,6 +19,9 @@ import { PlayerListPageComponent } from './components/player-list-page/player-li
 import { TeamListPageComponent } from './components/team-list-page/team-list-page.component';
 import { SharedComponentsModule } from './components/shared/shared-components.module';
 import { PlayerDetailPageComponent } from './components/player-detail-page/player-detail-page.component';
+import { LeagueOptionsPageComponent } from './components/league-options-page/league-options-page.component';
+import { LeagueStandingsPageComponent } from './components/league-standings-page/league-standings-page.component';
+import { StandingsModule } from './modules/standings/standings.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { PlayerDetailPageComponent } from './components/player-detail-page/playe
     LeagueListPageComponent,
     PlayerListPageComponent,
     TeamListPageComponent,
-    PlayerDetailPageComponent
+    PlayerDetailPageComponent,
+    LeagueOptionsPageComponent,
+    LeagueStandingsPageComponent
   ],
   entryComponents: [],
   imports: [
@@ -41,8 +45,9 @@ import { PlayerDetailPageComponent } from './components/player-detail-page/playe
     PlayersModule,
     TeamsModule,
     CoreModule,
+    StandingsModule,
     SharedComponentsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

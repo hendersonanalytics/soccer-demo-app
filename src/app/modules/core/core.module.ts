@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { FootballApiInterceptor } from './interceptors/football-api.interceptor';
 import { LoadingIndicatorInterceptor } from './interceptors/loading-indicator.interceptor';
+import { RapidApiInterceptor } from './interceptors/rapid-api.interceptor';
 
 @NgModule({
   imports: [
@@ -12,7 +12,7 @@ import { LoadingIndicatorInterceptor } from './interceptors/loading-indicator.in
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: FootballApiInterceptor,
+      useClass: RapidApiInterceptor,
       multi: true,
     },
     {

@@ -70,7 +70,7 @@ describe('LeagueListPageComponent', () => {
 
   it('option lists should have the expected number of elements', () => {
     const leagueOptionElements = el.queryAll(By.css(getSelectorString('league-option-element')));
-    expect(leagueOptionElements.length).toBe(20);
+    expect(leagueOptionElements.length).toBe(11);
     const countryOptionElements = el.queryAll(By.css(getSelectorString('country-option-element')));
     expect(countryOptionElements.length).toBe(9);
     const seasonOptionElements = el.queryAll(By.css(getSelectorString('season-option-element')));
@@ -80,6 +80,6 @@ describe('LeagueListPageComponent', () => {
   it('clicking on a league should call the proper facade method', () => {
     const leagueOptionElement = el.query(By.css(getSelectorString('league-option-element')));
     leagueOptionElement.nativeElement.click();
-    expect(leagueFacadeSpy.selectLeague).toHaveBeenCalledOnceWith(1);
+    expect(leagueFacadeSpy.selectLeague).toHaveBeenCalledOnceWith(39);
   });
 });

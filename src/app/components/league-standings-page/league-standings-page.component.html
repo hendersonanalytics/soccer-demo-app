@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      League Standings
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col
+        size="12"
+        size-md="8" offset-md="2"
+        size-lg="6" offset-lg="3"
+      >
+        <div class="ion-padding">
+
+          <div class="ion-padding" *ngIf="standings$ | async as standings">
+            <table>
+              <thead>
+                <tr>
+                  <th *ngFor="let column of columns">{{column.name}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let standing of standings">
+                  <td>{{standing.rank}}</td>
+                  <td>{{standing.team.name}}</td>
+                  <td>{{standing.all.played}}</td>
+                  <td>{{standing.all.win}}</td>
+                  <td>{{standing.all.draw}}</td>
+                  <td>{{standing.all.lose}}</td>
+                  <td>{{standing.rank}}</td>
+                  <td>{{standing.form}}</td>
+                  <td>{{standing.all.goals.for}}</td>
+                  <td>{{standing.all.goals.against}}</td>
+                  <td>{{standing.goalsDiff}}</td>
+                  <td>{{standing.points}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

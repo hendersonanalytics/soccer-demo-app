@@ -5,6 +5,9 @@ import { map } from 'rxjs/operators';
 import { LeagueFacade } from '../../modules/leagues/facades/league.facade';
 import { FootballApiLeaguesResponseInfo } from '../../modules/leagues/models/football-api-leagues-response-info.interface';
 
+import { COUNTRY_NAMES } from 'src/app/constants/country-names';
+import { LEAGUE_IDS } from 'src/app/constants/league-ids';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'league-list.page.html',
@@ -14,20 +17,6 @@ export class LeagueListPageComponent implements OnInit {
   seasons$: Observable<number[]>;
   countries$: Observable<string[]>;
   leagues$: Observable<FootballApiLeaguesResponseInfo[]>;
-
-  private readonly FILTER_COUNTRIES = [
-    'England',
-    'France',
-    'Germany',
-    'Italy',
-    'Spain',
-    'Brazil',
-    'Mexico',
-    'Argentina',
-    'Portugal',
-    'USA',
-    'Netherlands',
-  ];
 
   constructor(private leagueFacade: LeagueFacade) {}
 
@@ -40,9 +29,11 @@ export class LeagueListPageComponent implements OnInit {
       )
     );
     this.countries$ = this.leagueFacade.countries$.pipe(
-      map((countries) => countries.filter((country) => this.FILTER_COUNTRIES.includes(country)))
+      map((countries) => countries.filter((country) => COUNTRY_NAMES.includes(country)))
     );
-    this.leagues$ = this.leagueFacade.leagues$;
+    this.leagues$ = this.leagueFacade.leagues$.pipe(
+      map((leagues) => leagues.filter((league) => LEAGUE_IDS.includes(league.league.id)))
+    );
   }
 
   onChangeSeason(event): void {
