@@ -21,6 +21,7 @@ export class PlayerDetailPageComponent implements OnInit {
   league$: Observable<FootballApiLeaguesResponseInfo>;
   selectedPlayerStats$: Observable<FootballApiPlayerStatsInfo>;
   selectedPlayerAttributes$: Observable<PlayerResponsePlayerInfo>;
+  isGoalkeeper$: Observable<boolean>;
 
   constructor(
     private playerFacade: PlayerFacade,
@@ -34,5 +35,6 @@ export class PlayerDetailPageComponent implements OnInit {
     this.team$ = this.teamFacade.selectedTeamInfo$;
     this.season$ = this.leagueFacade.selectedSeason$;
     this.league$ = this.leagueFacade.selectedLeagueInfo$;
+    this.isGoalkeeper$ = this.playerFacade.isGoalkeeper$;
   }
 }

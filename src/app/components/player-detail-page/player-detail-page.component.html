@@ -20,41 +20,105 @@
         <ion-card *ngIf="selectedPlayerAttributes$ | async as attributes">
           <ion-item>
             <ion-avatar slot="start">
-              <img [src]="attributes?.photo" alt="player image">
+              <img [src]="attributes?.photo" alt="player image" appImgFallback>
             </ion-avatar>
-            <ion-label data-test="label-team-name">{{attributes.name}}</ion-label>
+            <ion-label data-test="label-team-name">{{attributes.firstname}} {{attributes.lastname}}</ion-label>
           </ion-item>
-          <ion-card-content>
+          <ion-card-content *ngIf="attributes.age">
             Age: {{attributes.age}}
           </ion-card-content>
-          <ion-card-content *ngIf="league$ | async as league">
-            {{league.league.name}}
+          <ion-card-content *ngIf="attributes.height">
+            Height: {{attributes.height}}
+          </ion-card-content>
+          <ion-card-content *ngIf="attributes.weight">
+            Weight: {{attributes.weight}}
+          </ion-card-content>
+          <ion-card-content *ngIf="attributes.nationality">
+            Nationality: {{attributes.nationality}}
           </ion-card-content>
           <ion-card-content *ngIf="season$ | async as season">
-            {{season}}
+            Season: {{season}}
           </ion-card-content>
         </ion-card>
 
         <ion-card *ngIf="selectedPlayerStats$ | async as stats">
-          <ion-card-content *ngIf="stats?.games?.appearences">
+          <ion-item>
+            <ion-label>General</ion-label>
+          </ion-item>
+          <ion-card-content *ngIf="stats.league.name">
+            League: {{stats.league.name}} ({{stats.league.country}})
+          </ion-card-content>
+          <ion-card-content *ngIf="stats.games?.position">
+            Position: {{stats.games.position}}
+          </ion-card-content>
+          <ion-card-content *ngIf="stats.games?.appearences || stats.games?.appearences === 0">
             Games: {{stats.games.appearences}}
           </ion-card-content>
-          <ion-card-content *ngIf="stats?.goals?.total">
-            Goals: {{stats.goals.total}}
+          <ion-card-content *ngIf="stats.games?.minutes || stats.games?.minutes === 0">
+            Minutes Played: {{stats.games.minutes}}
           </ion-card-content>
-          <ion-card-content *ngIf="stats?.goals?.assists">
-            Assists: {{stats.goals.assists}}
+          <ion-card-content *ngIf="stats.games?.rating">
+            Rating: {{stats.games.rating}}
           </ion-card-content>
-          <ion-card-content *ngIf="stats?.passes?.total">
-            Passes: {{stats.passes.total}}
-          </ion-card-content>
-          <ion-card-content *ngIf="stats?.tackles?.total">
-            Tackles: {{stats.tackles.total}}
-          </ion-card-content>
-          <ion-card-content *ngIf="stats?.cards?.yellow">
-            Yellow Cards: {{stats.cards.yellow}}
-          </ion-card-content>
+
+          <ng-container *ngIf="
+            stats.goals?.total || stats.goals?.total === 0 ||
+            stats.goals?.assists || stats.goals?.assists === 0 ||
+            stats.shots?.total || stats.shots?.total === 0 ||
+            stats.shots?.on || stats.shots?.on === 0
+          ">
+            <ion-item>
+              <ion-label>Goal Stats</ion-label>
+            </ion-item>
+            <ion-card-content *ngIf="stats.goals?.total || stats.goals?.total === 0">
+              Goals: {{stats.goals.total}}
+            </ion-card-content>
+            <ion-card-content *ngIf="stats.goals?.assists || stats.goals?.assists === 0">
+              Assists: {{stats.goals.assists}}
+            </ion-card-content>
+            <ion-card-content *ngIf="stats.shots?.total || stats.shots?.total === 0">
+              Total Shots: {{stats.shots.total}}
+            </ion-card-content>
+            <ion-card-content *ngIf="stats.shots?.on || stats.shots?.on === 0">
+              Shots on Target: {{stats.shots.on}}
+            </ion-card-content>
+          </ng-container>
+
+          <ng-container *ngIf="isGoalkeeper$ | async as isGoalkeeper">
+            <ng-container *ngIf="
+              stats.goals?.saves || stats.goals?.saves === 0 ||
+              stats.goals?.conceded || stats.goals?.conceded === 0 ||
+              stats.penalty?.saved || stats.penalty?.saved === 0
+            ">
+              <ion-item>
+                <ion-label>Goalkeeping Stats</ion-label>
+              </ion-item>
+              <ion-card-content *ngIf="stats.goals?.saves || stats.goals?.saves === 0">
+                Shots Saved: {{stats.goals.saves}}
+              </ion-card-content>
+              <ion-card-content *ngIf="stats.goals?.conceded || stats.goals?.conceded === 0">
+                Goals Conceded: {{stats.goals.conceded}}
+              </ion-card-content>
+              <ion-card-content *ngIf="stats.penalty?.saved || stats.penalty?.saved === 0">
+                Penalty Kicks Saved: {{stats.penalty.saved}}
+              </ion-card-content>
+            </ng-container>
+          </ng-container>
+
+          <ng-container *ngIf="stats.cards?.yellow || stats.cards?.yellow === 0 || stats.cards?.red || stats.cards?.red === 0">
+            <ion-item>
+              <ion-label>Discipline</ion-label>
+            </ion-item>
+            <ion-card-content *ngIf="stats.cards?.yellow || stats.cards?.yellow === 0">
+              Yellow Cards: {{stats.cards.yellow}}
+            </ion-card-content>
+            <ion-card-content *ngIf="stats.cards?.red || stats.cards?.red === 0">
+              Red Cards: {{stats.cards.red}}
+            </ion-card-content>
+          </ng-container>
+
         </ion-card>
+
       </ion-col>
     </ion-row>
   </ion-grid>

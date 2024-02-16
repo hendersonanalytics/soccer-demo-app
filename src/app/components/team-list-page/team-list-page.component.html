@@ -17,12 +17,14 @@
         size-md="8" offset-md="2"
         size-lg="6" offset-lg="3"
       >
-        <ion-list-header *ngIf="league$ | async as league">
-          <ion-label>{{league.league.name}}</ion-label>
-        </ion-list-header>
-        <ion-list-header *ngIf="season$ | async as season">
-          <ion-label>{{season}}</ion-label>
-        </ion-list-header>
+        <ng-container *ngIf="{
+          league: league$ | async,
+          season: season$ | async
+        } as data;">
+          <h1 class="team-list-header">
+            {{data.league?.league?.name || ''}} {{data.season || ''}}
+          </h1>
+        </ng-container>
 
         <ion-list *ngIf="teams$ | async as teams">
           <app-no-results-found *ngIf="teams.length === 0"></app-no-results-found>
@@ -34,7 +36,7 @@
               data-test="team-list-item"
             >
               <ion-avatar slot="start">
-                <img [src]="team.team.logo" alt="logo">
+                <img [src]="team.team.logo" alt="logo" appImgFallback>
               </ion-avatar>
               <ion-label>{{team.team.name}}</ion-label>
           </ion-item>

@@ -1,0 +1,53 @@
+table {
+    overflow-x: auto;
+}
+
+.standings-page-heading {
+    text-align: center;
+}
+
+.standings-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    border: 1px solid #ddd;
+  }
+
+  .standings-table-header, td {
+    padding: 12px 15px;
+    text-align: center;
+  }
+
+  .standings-body-row {
+    min-height: 50px;
+  }
+
+  .standings-table-header {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+  }
+
+  td {
+    border-bottom: 1px solid #ddd;
+  }
+
+  .team-cell {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    .team-logo {
+        margin-right: 8px;
+        width: 20px;
+        height: 20px;
+    }
+  }
+
+  tr:nth-child(even){background-color: #f2f2f2}
+
+  @media screen and (max-width: 650px) {
+    .team-logo {
+        display: none;
+    }
+  }

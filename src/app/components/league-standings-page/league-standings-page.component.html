@@ -17,25 +17,33 @@
         size-md="8" offset-md="2"
         size-lg="6" offset-lg="3"
       >
-        <div class="ion-padding">
-
-          <div class="ion-padding" *ngIf="standings$ | async as standings">
-            <table>
+        <ng-container *ngIf="standings$ | async as standings">
+          <app-no-results-found *ngIf="standings.length === 0"></app-no-results-found>
+          <ng-container  *ngIf="standings.length > 0">
+            <h1 class="standings-page-heading" *ngIf="league$ | async as league">
+              {{league.name}} {{league.season}} Standings
+            </h1>
+            <table class="standings-table">
               <thead>
                 <tr>
-                  <th *ngFor="let column of columns">{{column.name}}</th>
+                  <th class="standings-table-header" *ngFor="let column of columns">{{column.name}}</th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let standing of standings">
+                <tr class="standings-body-row" *ngFor="let standing of standings">
                   <td>{{standing.rank}}</td>
-                  <td>{{standing.team.name}}</td>
+                  <td>
+                    <span class="team-cell">
+                      <ion-avatar slot="start" class="team-logo">
+                        <img [src]="standing.team.logo" alt="logo" appImgFallback>
+                      </ion-avatar>
+                      {{standing.team.name}}
+                    </span>
+                  </td>
                   <td>{{standing.all.played}}</td>
                   <td>{{standing.all.win}}</td>
                   <td>{{standing.all.draw}}</td>
                   <td>{{standing.all.lose}}</td>
-                  <td>{{standing.rank}}</td>
-                  <td>{{standing.form}}</td>
                   <td>{{standing.all.goals.for}}</td>
                   <td>{{standing.all.goals.against}}</td>
                   <td>{{standing.goalsDiff}}</td>
@@ -43,9 +51,8 @@
                 </tr>
               </tbody>
             </table>
-          </div>
-
-        </div>
+          </ng-container>
+        </ng-container>
       </ion-col>
     </ion-row>
   </ion-grid>

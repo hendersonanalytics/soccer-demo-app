@@ -24,27 +24,19 @@
           } as data"
         >
           <div *ngIf="data.league && data.season">
-            <ion-list-header>
-              <ion-label>{{data.league.league.name}}</ion-label>
-            </ion-list-header>
-            <ion-list-header>
-              <ion-label>{{data.season}}</ion-label>
-            </ion-list-header>
-
+            <h1 class="team-list-header">
+              {{data.league?.league?.name || ''}} {{data.season || ''}}
+            </h1>
             <ion-list>
-              <ion-item>
-                <ion-label
-                  data-test="label-view-teams"
-                  routerLink="/teams"
-                >
+              <ion-item routerLink="/teams">
+                <ion-label data-test="label-view-teams">
                   View Teams
                 </ion-label>
               </ion-item>
 
-              <ion-item>
+              <ion-item routerLink="/standings">
                 <ion-label
                   data-test="label-view-standings"
-                  routerLink="/standings"
                   (click)="onSelectStandings({
                     leagueId: data.league.league.id,
                     season: data.season
@@ -54,7 +46,7 @@
                 </ion-label>
               </ion-item>
             </ion-list>
-          </div>
+            </div>
         </ng-container>
 
       </ion-col>

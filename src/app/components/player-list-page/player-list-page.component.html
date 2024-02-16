@@ -20,7 +20,7 @@
         <ion-card *ngIf="team$ | async as team">
           <ion-item>
             <ion-avatar slot="start">
-              <img [src]="team?.team?.logo" alt="logo">
+              <img [src]="team?.team?.logo" alt="logo" appImgFallback>
             </ion-avatar>
             <ion-label data-test="label-team-name">{{team.team.name}}</ion-label>
           </ion-item>
@@ -44,9 +44,9 @@
                 routerLink="/player-details"
               >
               <ion-avatar slot="start">
-                <img [src]="player.player.photo" alt="player image">
+                <img [src]="player.player.photo" alt="player image" appImgFallback>
               </ion-avatar>
-              <ion-label>{{player.player.name}}</ion-label>
+              <ion-label>{{player.player.firstname}} {{player.player.lastname}}</ion-label>
             </ion-item>
             </ng-container>
           </ion-list>

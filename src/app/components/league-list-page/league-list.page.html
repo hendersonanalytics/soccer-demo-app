@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      League Options
+      Soccer Stats and Standings
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -48,7 +48,7 @@
                 (click)="onSelectLeague(league.league.id)"
               >
                 <ion-avatar slot="start">
-                  <img [src]="league.league.logo" alt="logo">
+                  <img [src]="league.league.logo" alt="logo" appImgFallback>
                 </ion-avatar>
                 <ion-label>{{league.league.name}}</ion-label>
             </ion-item>

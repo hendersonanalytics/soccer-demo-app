@@ -35,6 +35,16 @@ export class PlayerFacade {
         map(playerInfo => playerInfo.player)
     );
 
+    public isGoalkeeper$: Observable<boolean> = this.selectedPlayerStats$.pipe(
+        map((stats) => {
+            const position = stats?.games?.position;
+            if (position && typeof position === 'string') {
+                return position.toLowerCase() === 'goalkeeper';
+            }
+            return null;
+        })
+    );
+
     constructor(private store: Store<PlayerState>) {}
 
     appendPlayers(): void {
