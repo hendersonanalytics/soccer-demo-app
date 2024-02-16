@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { LoadingIndicatorInterceptor } from './interceptors/loading-indicator.interceptor';
-import { RapidApiInterceptor } from './interceptors/rapid-api.interceptor';
 import { ImgFallbackDirective } from './directives/img-fallback.directive';
+import { FootballApiInterceptor } from './interceptors/football-api.interceptor';
 
 @NgModule({
   imports: [
@@ -19,7 +19,7 @@ import { ImgFallbackDirective } from './directives/img-fallback.directive';
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: RapidApiInterceptor,
+      useClass: FootballApiInterceptor,
       multi: true,
     },
     {
