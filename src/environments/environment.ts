@@ -6,6 +6,7 @@ import { SOCCER_API_KEY } from 'secrets';
 
 export const environment = {
   production: false,
+  httpRetryAttempts: 2,
   apiHeaderInfo: {
     rapidApi: {
       host: {

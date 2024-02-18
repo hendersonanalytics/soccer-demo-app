@@ -24,7 +24,9 @@ export class LeagueListPageComponent implements OnInit {
     this.leagueFacade.fetchSeasons();
     this.seasons$ = this.leagueFacade.seasons$.pipe(
       map((seasons) => seasons
-        .filter((season) => season <= new Date().getFullYear() - 1)
+        .filter((season) => {
+          return season <= new Date().getFullYear() - 1 && season >= 2013;
+        })
         .sort((a, b) => b - a)
       )
     );

@@ -5,6 +5,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingIndicatorInterceptor } from './interceptors/loading-indicator.interceptor';
 import { ImgFallbackDirective } from './directives/img-fallback.directive';
 import { FootballApiInterceptor } from './interceptors/football-api.interceptor';
+import { RetryInterceptor } from './interceptors/retry.interceptor';
 
 @NgModule({
   imports: [
@@ -20,6 +21,11 @@ import { FootballApiInterceptor } from './interceptors/football-api.interceptor'
     {
       provide: HTTP_INTERCEPTORS,
       useClass: FootballApiInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RetryInterceptor,
       multi: true,
     },
     {
