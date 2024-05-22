@@ -85,12 +85,16 @@ const reducer = createReducer(
         clonedState.countries.selected = action.country;
         return clonedState;
     }),
-    on(leagueActions.selectLeague, (state, action) => {
+    on(leagueActions.selectLeague,
+       leagueActions.selectLeagueWithoutAutoFetch,
+        (state, action) => {
         const clonedState = cloneDeep(state);
         clonedState.leagues.selected = action.league;
         return clonedState;
     }),
-    on(leagueActions.selectSeason, (state, action) => {
+    on(leagueActions.selectSeason,
+       leagueActions.selectSeasonWithoutAutoFetch,
+        (state, action) => {
         const clonedState = cloneDeep(state);
         clonedState.seasons.selected = action.season;
         return clonedState;

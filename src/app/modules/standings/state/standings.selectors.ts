@@ -2,6 +2,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import { StandingsStateInfo, featureKey } from './standings.reducer';
 import { FlattenedStandingsInfo } from '../models/football-api-standings-response-info.interface';
+import { LeagueLimitedInfo } from '../../players/models/football-api-players-response-info.interface';
 
 const standingsSelector = createFeatureSelector<StandingsStateInfo>(featureKey);
 
@@ -25,13 +26,12 @@ const selectFlattenedStandingsInfo = createSelector(selectStandings, (standings:
             points: standing.points,
         } as FlattenedStandingsInfo;
     });
-    console.log(obj);
     return obj;
 });
 
-const selectLeague = createSelector(selectStandings, (standings: StandingsStateInfo) => standings?.league);
-const selectIsLoading = createSelector(selectStandings, (standings: StandingsStateInfo) => standings?.isLoading);
-const selectError = createSelector(selectStandings, (standings: StandingsStateInfo) => standings?.error);
+const selectLeague = createSelector(selectStandings, (standings: StandingsStateInfo): LeagueLimitedInfo => standings?.league);
+const selectIsLoading = createSelector(selectStandings, (standings: StandingsStateInfo): boolean => standings?.isLoading);
+const selectError = createSelector(selectStandings, (standings: StandingsStateInfo): boolean => standings?.error);
 
 export const standingsSelectors = {
     selectStandingsInfo,

@@ -17,6 +17,8 @@ export class LeagueListPageComponent implements OnInit {
   seasons$: Observable<number[]>;
   countries$: Observable<string[]>;
   leagues$: Observable<FootballApiLeaguesResponseInfo[]>;
+  selectedSeason$: Observable<number>;
+  selectedCountry$: Observable<string>;
 
   constructor(private leagueFacade: LeagueFacade) {}
 
@@ -36,6 +38,8 @@ export class LeagueListPageComponent implements OnInit {
     this.leagues$ = this.leagueFacade.leagues$.pipe(
       map((leagues) => leagues.filter((league) => LEAGUE_IDS.includes(league.league.id)))
     );
+    this.selectedSeason$ = this.leagueFacade.selectedSeason$;
+    this.selectedCountry$ = this.leagueFacade.selectedCountry$;
   }
 
   onChangeSeason(event): void {

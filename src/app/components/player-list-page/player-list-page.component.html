@@ -17,7 +17,14 @@
         size-md="8" offset-md="2"
         size-lg="6" offset-lg="3"
       >
-        <ion-card *ngIf="team$ | async as team">
+      <ng-container *ngIf="{
+          league: league$ | async,
+          season: season$ | async,
+          team: team$ | async,
+          country: selectedCountry$ | async
+        } as data;"
+      >
+        <ion-card *ngIf="data.team as team">
           <ion-item>
             <ion-avatar slot="start">
               <img [src]="team?.team?.logo" alt="logo" appImgFallback>
@@ -27,38 +34,45 @@
           <ion-card-content>
             Founded: {{team.team.founded}} | Stadium: {{team.venue.name}}
           </ion-card-content>
-          <ion-card-content *ngIf="league$ | async as league">
+          <ion-card-content *ngIf="data.league as league">
             {{league.league.name}}
           </ion-card-content>
-          <ion-card-content *ngIf="season$ | async as season">
+          <ion-card-content *ngIf="data.season as season">
             {{season}}
           </ion-card-content>
         </ion-card>
-          <ion-list *ngIf="players$ | async as players">
-            <app-no-results-found *ngIf="players.length === 0"></app-no-results-found>
-            <ng-container *ngIf="players.length > 0">
-              <ion-item
-                *ngFor="let player of players"
-                data-test="player-list-item"
-                (click)="onSelectPlayer(player.player.id)"
-                routerLink="/player-details"
-              >
-              <ion-avatar slot="start">
-                <img [src]="player.player.photo" alt="player image" appImgFallback>
-              </ion-avatar>
-              <ion-label>{{player.player.firstname}} {{player.player.lastname}}</ion-label>
-            </ion-item>
-            </ng-container>
-          </ion-list>
-          <ion-button
-            *ngIf="morePlayersAreAvailable$ | async as showMore"
-            expand="block"
-            (click)="onClickShowMore()"
-            data-test="show-more-btn"
-          >
-            Show More
-          </ion-button>
-
+        <ion-list *ngIf="players$ | async as players">
+          <app-no-results-found *ngIf="players.length === 0"></app-no-results-found>
+          <ng-container *ngIf="players.length > 0">
+            <ion-item
+              *ngFor="let player of players"
+              data-test="player-list-item"
+              (click)="onSelectPlayer(player.player.id)"
+              routerLink="/player-details"
+              [queryParams]="{
+                leagueId: data.league.league.id,
+                season: data.season,
+                teamId: data.team?.team.id,
+                playerId: player.player.id,
+                country: data.country
+              }"
+            >
+            <ion-avatar slot="start">
+              <img [src]="player.player.photo" alt="player image" appImgFallback>
+            </ion-avatar>
+            <ion-label>{{player.player.firstname}} {{player.player.lastname}}</ion-label>
+          </ion-item>
+          </ng-container>
+        </ion-list>
+        <ion-button
+          *ngIf="morePlayersAreAvailable$ | async as showMore"
+          expand="block"
+          (click)="onClickShowMore()"
+          data-test="show-more-btn"
+        >
+          Show More
+        </ion-button>
+      </ng-container>
       </ion-col>
     </ion-row>
   </ion-grid>

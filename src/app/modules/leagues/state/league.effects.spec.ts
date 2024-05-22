@@ -1,11 +1,9 @@
 import { Observable, of, throwError } from 'rxjs';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { provideMockStore } from '@ngrx/store/testing';
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { LeagueService } from '../services/league.service';
 import { LeagueEffects } from './league.effects';
-import * as fromReducer from './league.reducer';
 import { TEST_LEAGUES_RESPONSE } from 'src/app/support/data/test-leagues-response';
 import { TEST_SEASONS_RESPONSE } from 'src/app/support/data/test-seasons-response';
 import { leagueActions } from './league.actions';
@@ -22,7 +20,6 @@ describe('LeagueEffects', () => {
         TestBed.configureTestingModule({
             providers: [
                 provideMockActions(() => actions$),
-                provideMockStore({ initialState: fromReducer.initialState }),
                 LeagueEffects,
                 {  provide: LeagueService, useValue: leagueServiceSpy }
             ]

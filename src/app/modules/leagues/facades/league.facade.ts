@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
-import { catchError, filter, map, switchMap } from 'rxjs/operators';
+import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
 import { FootballApiLeaguesResponseInfo } from '../models/football-api-leagues-response-info.interface';
 
 import { LeagueQueryParams } from '../models/league-query-params.interface';
@@ -38,7 +38,7 @@ export class LeagueFacade {
     );
 
     selectedLeagueInfo$: Observable<FootballApiLeaguesResponseInfo> = this.selectedLeague$.pipe(
-        filter((leagueId) => Boolean(leagueId)  === true),
+        filter((leagueId) => Boolean(leagueId) === true),
         switchMap((leagueId) => {
             return this.leagues$.pipe(
                 map(leagues => leagues.find(league => league.league.id === leagueId)),
@@ -63,11 +63,19 @@ export class LeagueFacade {
         this.store.dispatch(leagueActions.selectSeason({season}));
     }
 
+    selectSeasonWithoutAutoFetch(season: number): void {
+        this.store.dispatch(leagueActions.selectSeasonWithoutAutoFetch({season}));
+    }
+
     selectCountry(country: string): void {
         this.store.dispatch(leagueActions.selectCountry({country}));
     }
 
     selectLeague(league: number): void {
         this.store.dispatch(leagueActions.selectLeague({league}));
+    }
+
+    selectLeagueWithoutAutoFetch(league: number): void {
+        this.store.dispatch(leagueActions.selectLeagueWithoutAutoFetch({league}));
     }
 }

@@ -28,7 +28,7 @@
 
           <ng-container *ngIf="countries$ | async as countries">
             <ion-item *ngIf="countries?.length > 0">
-              <ng-container >
+              <ng-container>
                 <ion-label>Select a country</ion-label>
                 <ion-select placeholder="Pick one!" (ionChange)="onChangeCountry($event)">
                   <ion-select-option data-test="country-option-element" *ngFor="let country of countries" [value]="country">
@@ -38,22 +38,33 @@
               </ng-container>
             </ion-item>
           </ng-container>
-          <ion-list *ngIf="leagues$ | async as leagues">
-            <app-no-results-found *ngIf="leagues.length === 0"></app-no-results-found>
-            <ng-container *ngIf="leagues.length > 0">
-              <ion-item
-                data-test="league-option-element"
-                *ngFor="let league of leagues"
-                routerLink="/league-options"
-                (click)="onSelectLeague(league.league.id)"
-              >
-                <ion-avatar slot="start">
-                  <img [src]="league.league.logo" alt="logo" appImgFallback>
-                </ion-avatar>
-                <ion-label>{{league.league.name}}</ion-label>
-            </ion-item>
-            </ng-container>
-          </ion-list>
+          <ng-container *ngIf="{
+            selectedCountry: selectedCountry$ | async,
+            selectedSeason: selectedSeason$ | async,
+            leagues: leagues$ | async
+            } as data"
+          >
+            <ion-list *ngIf="data.leagues as leagues">
+              <app-no-results-found *ngIf="leagues.length === 0"></app-no-results-found>
+              <ng-container *ngIf="leagues.length > 0">
+                <ion-item
+                  data-test="league-option-element"
+                  *ngFor="let league of leagues"
+                  routerLink="/league-options"
+                  [queryParams]="{
+                    leagueId: league.league.id,
+                    season: data.selectedSeason,
+                    country: data.selectedCountry
+                  }"
+                >
+                  <ion-avatar slot="start">
+                    <img [src]="league.league.logo" alt="logo" appImgFallback>
+                  </ion-avatar>
+                  <ion-label>{{league.league.name}}</ion-label>
+              </ion-item>
+              </ng-container>
+            </ion-list>
+        </ng-container>
         </ion-list>
       </ion-col>
     </ion-row>

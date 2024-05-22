@@ -28,11 +28,11 @@ import { RetryInterceptor } from './interceptors/retry.interceptor';
       useClass: RetryInterceptor,
       multi: true,
     },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: LoadingIndicatorInterceptor,
-      multi: true,
-    }
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: LoadingIndicatorInterceptor,
+    //   multi: true,
+    // }
   ]
 })
 export class CoreModule { }

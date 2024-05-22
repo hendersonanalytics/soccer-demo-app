@@ -29,14 +29,28 @@ const selectSeason = createAction(
     props<{ season: number }>()
 );
 
+const selectSeasonWithoutAutoFetch = createAction(
+    LEAGUE_ACTIONS.SELECT_SEASON_WITHOUT_AUTO_FETCH,
+    props<{ season: number }>()
+);
+
 const selectLeague = createAction(
     LEAGUE_ACTIONS.SELECT_LEAGUE,
+    props<{ league: number }>()
+);
+
+const selectLeagueWithoutAutoFetch = createAction(
+    LEAGUE_ACTIONS.SELECT_LEAGUE_WITHOUT_AUTO_FETCH,
     props<{ league: number }>()
 );
 
 const selectCountry = createAction(
     LEAGUE_ACTIONS.SELECT_COUNTRY,
     props<{ country: string }>()
+);
+
+const noOpAction = createAction(
+    LEAGUE_ACTIONS.NO_OP_ACTION
 );
 
 export const leagueActions = {
@@ -50,5 +64,10 @@ export const leagueActions = {
 
     selectSeason,
     selectLeague,
-    selectCountry
+    selectCountry,
+
+    selectSeasonWithoutAutoFetch,
+    selectLeagueWithoutAutoFetch,
+
+    noOpAction
 };

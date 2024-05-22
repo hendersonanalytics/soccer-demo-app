@@ -25,7 +25,7 @@
             </h1>
             <div class="table-container">
 
-              <table class="standings-table">
+              <table class="standings-table" *ngIf="league$ | async as league">
                 <thead>
                   <tr>
                     <th class="standings-table-header" *ngFor="let column of columns">{{column.name}}</th>
@@ -35,12 +35,24 @@
                   <tr class="standings-body-row" *ngFor="let standing of standings">
                     <td>{{standing.rank}}</td>
                     <td>
-                      <span class="team-cell">
-                        <ion-avatar slot="start" class="team-logo">
-                          <img [src]="standing.team.logo" alt="logo" appImgFallback>
-                        </ion-avatar>
-                        {{standing.team.name}}
-                      </span>
+                      <a
+                        [routerLink]="['/team-details']"
+                        [queryParams]="{
+                          season: league.season,
+                          leagueId: league.id,
+                          teamId: standing.team.id,
+                          country: selectedCountry$ | async
+                        }"
+                      >
+                        <span
+                          class="team-cell"
+                        >
+                          <ion-avatar slot="start" class="team-logo">
+                            <img [src]="standing.team.logo" alt="logo" appImgFallback>
+                          </ion-avatar>
+                          {{standing.team.name}}
+                        </span>
+                    </a>
                     </td>
                     <td>{{standing.all.played}}</td>
                     <td>{{standing.all.win}}</td>

@@ -19,21 +19,27 @@
       >
         <ng-container *ngIf="{
           league: league$ | async,
-          season: season$ | async
+          season: season$ | async,
+          country: selectedCountry$ | async
         } as data;">
+          <p>{{country}}</p>
           <h1 class="team-list-header">
             {{data.league?.league?.name || ''}} {{data.season || ''}}
           </h1>
-        </ng-container>
 
         <ion-list *ngIf="teams$ | async as teams">
           <app-no-results-found *ngIf="teams.length === 0"></app-no-results-found>
           <ng-container *ngIf="teams.length > 0">
             <ion-item
               *ngFor="let team of teams"
-              (click)="onSelectTeam(team.team.id)"
-              routerLink="/team-details"
               data-test="team-list-item"
+              [routerLink]="['/team-details']"
+              [queryParams]="{
+                leagueId: data.league.league.id,
+                season: data.season,
+                country: data.country,
+                teamId: team.team.id
+              }"
             >
               <ion-avatar slot="start">
                 <img [src]="team.team.logo" alt="logo" appImgFallback>
@@ -42,6 +48,7 @@
           </ion-item>
           </ng-container>
         </ion-list>
+        </ng-container>
       </ion-col>
     </ion-row>
   </ion-grid>

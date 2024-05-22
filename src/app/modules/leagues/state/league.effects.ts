@@ -1,12 +1,15 @@
 /* eslint-disable arrow-body-style */
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 
-import { catchError, concatMap, map } from 'rxjs/operators';
+import { catchError, concatMap, map, tap } from 'rxjs/operators';
 
 import { LeagueService } from '../services/league.service';
 import { leagueActions } from './league.actions';
+import { leagueSelectors } from './league.selectors';
+import { Store } from '@ngrx/store';
+import { QUERY_PARAMS } from 'src/app/configs/query-params.enum';
 
 @Injectable()
 export class LeagueEffects {
@@ -46,8 +49,49 @@ export class LeagueEffects {
         );
     });
 
+    selectSeasonWithoutAutoFetch$ = createEffect(() => {
+        return this.action$.pipe(
+            ofType(leagueActions.selectSeasonWithoutAutoFetch),
+            concatLatestFrom(() => this.store.select(leagueSelectors.selectSeasons)),
+            map(([action, seasons]) => {
+                return (seasons?.length === 0) || !seasons ?
+                    leagueActions.fetchSeasons() :
+                    leagueActions.noOpAction()
+            })
+        );
+    });
+
+    selectLeagueWithoutAutoFetch$ = createEffect(() => {
+        return this.action$.pipe(
+            ofType(leagueActions.selectLeagueWithoutAutoFetch),
+            concatLatestFrom((action) => [
+                this.store.select(leagueSelectors.selectLeagues),
+                this.store.select(leagueSelectors.selectSeasonSelected),
+                this.store.select(leagueSelectors.selectCountrySelected),
+              ]),
+            map(([action, leagues, selectedSeason, selectedCountry]) => {
+                if ((leagues?.length === 0) || !leagues) {
+                    const queryParams = {
+                        [QUERY_PARAMS.SEASON]: selectedSeason,
+                        [QUERY_PARAMS.COUNTRY]: selectedCountry,
+                    };
+                    return leagueActions.fetchLeagues({ queryParams })
+                }
+                return leagueActions.noOpAction();
+            })
+        );
+    });
+
+    noOpEffect$ = createEffect(() => {
+        return this.action$.pipe(
+            ofType(leagueActions.noOpAction),
+            tap(() => {})
+        );
+    }, { dispatch: false });
+
     constructor(
         private leagueService: LeagueService,
-        private action$: Actions
+        private action$: Actions,
+        private store: Store,
     ) {}
 }
