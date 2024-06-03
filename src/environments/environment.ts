@@ -2,23 +2,12 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-import { SOCCER_API_KEY } from 'secrets';
+import { apiHeaderInfo } from '../app/configs/api.config';
 
 export const environment = {
   production: false,
   httpRetryAttempts: 2,
-  apiHeaderInfo: {
-    rapidApi: {
-      host: {
-        key: 'x-rapidapi-host',
-        value: 'v3.football.api-sports.io'
-      },
-      key: {
-        key: 'x-apisports-key',
-        value: SOCCER_API_KEY
-      }
-    }
-  }
+  apiHeaderInfo,
 };
 
 /*
